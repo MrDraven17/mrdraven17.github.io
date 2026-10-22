@@ -1,0 +1,52 @@
+/* 首屏：背景照片与清晰签名分层。只模糊背景，不模糊文字。 */
+.hero.signature-hero {
+  position: relative; isolation: isolate; overflow: hidden;
+  width: 100%; max-width: none; margin: 0; padding: 70px 5vw 100px;
+  min-height: calc(100svh - 66px); background: #171918;
+  display: flex; align-items: center; justify-content: center; color: #fff;
+}
+.hero-background { position: absolute; inset: -35px; z-index: -2; pointer-events: none; }
+.hero-background img {
+  position: absolute; width: 100%; height: 100%; max-width: none;
+  object-fit: cover; filter: blur(16px); opacity: 0;
+  transition: opacity 2.4s ease-in-out;
+}
+.hero-background img.is-visible { opacity: 1; }
+.hero-shade { position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(180deg,rgba(0,0,0,.48),rgba(0,0,0,.54) 50%,rgba(0,0,0,.65)); }
+.signature-content { width: 100%; }
+/* 原 PNG 保持不变；显示窗口排除透明外沿与底部孤立杂点，不拉伸笔迹。
+   原图 3404×980，窗口对应 x=640,y=150,width=2220,height=510。 */
+.signature-hero .signature-window {
+  position: relative; overflow: hidden; width: min(88vw,1480px);
+  aspect-ratio: 2220 / 510; margin: 0 auto;
+}
+.signature-window img {
+  position: absolute; width: 153.333333%; max-width: none; height: auto;
+  left: -28.828829%; top: -29.411765%;
+}
+.signature-name { font-size: clamp(14px,1.4vw,20px); font-weight: 400;
+  letter-spacing: .12em; margin-top: 28px; color: #fff; }
+.hero-bottom { position: absolute; bottom: 30px; left: 5vw; right: 5vw;
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  font-size: 12px; color: #ffffffd9; }
+.hero-bottom a { padding: 10px 0; }
+@media(max-width:600px) {
+  .hero.signature-hero { min-height: calc(100svh - 60px); padding: 60px 4vw 100px; }
+  .signature-hero .signature-window { width: 94vw; }
+  .signature-name { margin-top: 24px; font-size: 14px; }
+  .hero-background img { filter: blur(11px); }
+  .hero-bottom { left: 6vw; right: 6vw; font-size: 11px; gap: 12px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .hero-background img { transition: none; }
+}
+
+/* V3 独立布局的首屏文字居中。 */
+.signature-content { text-align: center; }
+/* 修订：首屏铺满导航后方，底部只保留居中箭头。 */
+.hero.signature-hero { min-height: 100svh; }
+.hero-bottom { justify-content: center; bottom: 24px; }
+.hero-down { display: grid; place-items: center; width: 52px; height: 52px; font-size: 28px; border-radius: 50%; }
+.hero-down:hover { background: #ffffff14; }
+@media(max-width:600px) { .hero.signature-hero { min-height: 100svh; } }

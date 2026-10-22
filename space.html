@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="description" content="汪鼎翊 / Draven — 走进摄影中的旧厂房，探索光线、结构与时间。交互三维空间。">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="data:,">
+  <title>光留下的地方 — Draven / Spatial study 01</title>
+  <link rel="stylesheet" href="css/space.css">
+  <script defer src="js/space-loader.js"></script>
+</head>
+<body>
+  <main id="space-app">
+    <img id="space-cover" src="assets/space/reference.png" alt="参考照片：阳光穿过天窗，照进锈蚀钢架构成的旧厂房" fetchpriority="high">
+    <div id="space-stage" aria-label="旧厂房三维模型"></div>
+    <div class="space-shade" aria-hidden="true"></div>
+    <header class="space-header">
+      <a class="space-back" href="index.html#selected" aria-label="返回个人网站作品展区"><span aria-hidden="true">↖</span> <span>Draven<span class="back-word"> / Portfolio</span></span></a>
+      <p class="space-edition">SPATIAL STUDY <span>001 / 7—024</span></p>
+      <div class="space-actions">
+        <button id="space-compare" type="button" aria-pressed="false">原图对照</button>
+        <button id="space-settings-button" type="button" aria-expanded="false" aria-controls="space-settings">设置 <span aria-hidden="true">＋</span></button>
+      </div>
+    </header>
+    <aside id="space-settings" class="space-panel" hidden aria-label="场景设置">
+      <label for="space-quality">画面质量</label>
+      <select id="space-quality"><option value="auto">自动适配</option><option value="high">精细</option><option value="low">流畅</option></select>
+      <button id="space-film" type="button" aria-pressed="true">胶片效果 <span>开</span></button>
+      <button id="space-tour" type="button" aria-pressed="false">自动巡游 <span>关</span></button>
+      <p>拖动旋转 · 滚轮缩放 · 右键平移<br>触屏：单指旋转，双指缩放 / 平移<br>键盘：方向键旋转，＋ / − 缩放，Home 复位</p>
+      <a href="三维场景分析.md" target="_blank" rel="noopener">查看重建分析 ↗</a>
+    </aside>
+    <figure id="space-reference" hidden>
+      <img src="assets/space/reference.png" alt="7-024 原始参考照片，用于对照模型结构、材质和光线">
+      <figcaption>7—024 / REFERENCE PHOTOGRAPH · 原始参考照片</figcaption>
+    </figure>
+    <div id="space-loading" role="status"><span class="loading-line"></span><span id="space-status">正在构建光与空间…</span><button id="space-retry" type="button" hidden>重新加载</button></div>
+    <div class="space-tools" role="group" aria-label="视角操作">
+      <button id="space-zoom-in" type="button" aria-label="放大模型">＋</button>
+      <button id="space-zoom-out" type="button" aria-label="缩小模型">−</button>
+      <button id="space-reset" type="button" aria-label="复位当前视角">↺</button>
+    </div>
+    <div class="space-caption">
+      <p class="space-index">TRACES OF SILENCE <span>—</span> INTERACTIVE RECONSTRUCTION</p>
+      <h1>光留下的地方<span>A place between times.</span></h1>
+      <p class="space-description">一座旧厂房，一束穿过时间的光。</p>
+    </div>
+    <footer class="space-footer">
+      <p id="space-hint" aria-live="polite">拖动探索空间 <span aria-hidden="true">↔</span></p>
+      <div class="space-views" role="group" aria-label="选择观察视角">
+        <button type="button" data-space-view="photo" aria-pressed="true">原图视角</button>
+        <button type="button" data-space-view="aisle" aria-pressed="false">侧跨观察</button>
+        <button type="button" data-space-view="overview" aria-pressed="false">结构全景</button>
+      </div>
+      <p class="space-credit">WANG DINGYI <span>© 2026</span></p>
+    </footer>
+    <p id="space-notice" class="space-notice" role="status" aria-live="polite"></p>
+    <noscript><p class="no-script">启用 JavaScript 可旋转和缩放三维场景。上方为原始参考照片。<a href="index.html#selected">返回作品</a></p></noscript>
+  </main>
+</body>
+</html>
