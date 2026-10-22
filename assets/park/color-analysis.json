@@ -1,0 +1,139 @@
+{
+  "source": "F:/GPT/DEACHMENT-TAFA/风格探索/PDF预览/3-012.png",
+  "width": 900,
+  "height": 600,
+  "regions": {
+    "grass": [
+      {
+        "hex": "#80ad7f",
+        "weight": 0.35
+      },
+      {
+        "hex": "#659664",
+        "weight": 0.224
+      },
+      {
+        "hex": "#a0be9f",
+        "weight": 0.219
+      },
+      {
+        "hex": "#33a66d",
+        "weight": 0.137
+      },
+      {
+        "hex": "#2f6f45",
+        "weight": 0.071
+      }
+    ],
+    "leaves": [
+      {
+        "hex": "#9c6138",
+        "weight": 0.286
+      },
+      {
+        "hex": "#b17958",
+        "weight": 0.252
+      },
+      {
+        "hex": "#794824",
+        "weight": 0.23
+      },
+      {
+        "hex": "#cf9a7b",
+        "weight": 0.137
+      },
+      {
+        "hex": "#492d15",
+        "weight": 0.095
+      }
+    ],
+    "wall": [
+      {
+        "hex": "#f2eeeb",
+        "weight": 0.286
+      },
+      {
+        "hex": "#dfd8d6",
+        "weight": 0.24
+      },
+      {
+        "hex": "#ccc4c2",
+        "weight": 0.181
+      },
+      {
+        "hex": "#b8b2b0",
+        "weight": 0.169
+      },
+      {
+        "hex": "#a3a2a0",
+        "weight": 0.124
+      }
+    ],
+    "bark": [
+      {
+        "hex": "#0f2212",
+        "weight": 0.408
+      },
+      {
+        "hex": "#09170a",
+        "weight": 0.391
+      },
+      {
+        "hex": "#0e3420",
+        "weight": 0.105
+      },
+      {
+        "hex": "#2a321d",
+        "weight": 0.061
+      },
+      {
+        "hex": "#294744",
+        "weight": 0.035
+      }
+    ],
+    "coat": [
+      {
+        "hex": "#05120b",
+        "weight": 0.357
+      },
+      {
+        "hex": "#040d06",
+        "weight": 0.352
+      },
+      {
+        "hex": "#061612",
+        "weight": 0.242
+      },
+      {
+        "hex": "#071f1f",
+        "weight": 0.032
+      },
+      {
+        "hex": "#1f2f2f",
+        "weight": 0.018
+      }
+    ],
+    "path": [
+      {
+        "hex": "#e7dede",
+        "weight": 0.342
+      },
+      {
+        "hex": "#d0c8ce",
+        "weight": 0.334
+      },
+      {
+        "hex": "#b7b5bc",
+        "weight": 0.206
+      },
+      {
+        "hex": "#91979b",
+        "weight": 0.088
+      },
+      {
+        "hex": "#866a57",
+        "weight": 0.03
+      }
+    ]
+  }
+}
