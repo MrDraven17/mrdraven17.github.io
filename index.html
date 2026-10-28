@@ -5,17 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="汪鼎翊 / Draven — Photography, spatial design and visual studies.">
   <meta name="color-scheme" content="light">
-  <title>汪鼎翊 / Draven — Portfolio</title>
+  <title>汪鼎翊 / Draven — Portfolio v4</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/hero.css">
   <link rel="stylesheet" href="css/space-entry.css">
+  <link rel="stylesheet" href="css/viewer.css">
   <script defer src="js/content.js"></script>
   <script defer src="js/motion.js"></script>
   <script defer src="js/gallery.js"></script>
   <script defer src="js/preview.js"></script>
   <script defer src="js/works.js"></script>
   <script defer src="js/main.js"></script>
-  <script defer src="js/hero.js"></script>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/v4.css"><script defer src="js/hero-v4.js"></script><script defer src="js/interactions.js"></script><script defer src="js/halftone.js"></script>
+<link rel="icon" href="data:,">
 </head>
 <body class="over-dark">
 <a class="skip" href="#works">跳至全部作品</a>
@@ -28,7 +31,6 @@
       <a href="#selected">Selected</a><a href="space.html">Space ↗</a><a href="#works">Works</a>
       <a href="#about">About</a><a href="#contact">Contact</a>
     </nav>
-    <button id="motion-toggle" type="button" aria-pressed="false">动效：开</button>
   </div>
   <div id="progress" aria-hidden="true"></div>
 </header>
@@ -42,11 +44,12 @@
     </div>
     <div class="hero-shade" aria-hidden="true"></div>
     <div class="signature-content">
-      <h1 class="signature-window"><img src="assets/signature-white.png" alt="Draven 艺术签名" width="3404" height="980"></h1>
+      <h1 class="signature-window" tabindex="0" aria-label="Draven 艺术签名，聚焦查看流光"><img src="assets/signature-white.png" alt="Draven 艺术签名" width="3404" height="980"><span class="signature-aura" aria-hidden="true"></span></h1>
       <p class="signature-name">汪鼎翊 / Draven</p>
     </div>
-    <div class="hero-bottom">
-      <a class="hero-down" href="#selected" aria-label="向下浏览作品"><span aria-hidden="true">↓</span></a>
+    <div class="hero-focus-shade" aria-hidden="true"></div><p class="hero-kicker">PHOTOGRAPHY · SPATIAL DESIGN · VISUAL STUDIES</p><p class="hero-index">WANG DINGYI / DRAVEN</p>
+    <div class="hero-bottom"><div class="hero-motion"><span id="motion-label">动效</span><button id="motion-toggle" type="button" role="switch" aria-checked="true" aria-label="开关动态效果"><span class="switch-track" aria-hidden="true"><span class="switch-thumb"><svg viewBox="0 0 20 20"><path d="M7 5v10M13 5v10"/></svg></span><span class="switch-on">ON</span><span class="switch-off">OFF</span></span></button></div>
+      <a class="hero-down" href="#selected" aria-label="向下浏览作品"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6"/></svg></a>
     </div>
   </section>
 
@@ -62,29 +65,21 @@
         <h3>Traces<br>of Silence.</h3>
         <p class="exhibit-sub">An Aesthetic Journey<br>through Everyday Places</p>
         <p class="exhibit-description">墙面、庭院与旧物。<br>日常场所里，时间留下的痕迹。</p>
-        <a class="text-link" data-open="silence" href="documents/silence.pdf">Explore the series <span aria-hidden="true">↗</span></a>
+        <a class="text-link" data-open="silence" href="collections/silence.html">Explore the series <span aria-hidden="true">↗</span></a>
       </div>
       <div class="silence-images">
-        <figure><img src="assets/original-pages/7-034.png" alt="Traces of Silence，彩色墙面与线框空间装置" loading="lazy" width="5400" height="3600"></figure>
-        <figure class="silence-detail"><a href="space.html" class="space-image-link" aria-label="走进这张照片的三维重建场景"><img src="assets/original-pages/7-024.png" alt="旧厂房内部的光线与空间" loading="lazy" width="5400" height="3600"><span>走进这张照片 <span aria-hidden="true">↗</span></span></a><figcaption>Everyday places, quietly observed.</figcaption></figure>
+        <figure><a class="selected-image" href="collections/silence.html" data-open="silence" aria-label="打开完整作品系列"><img src="assets/original-pages/7-034.png" alt="Traces of Silence，彩色墙面与线框空间装置" loading="lazy" width="5400" height="3600"></a></figure>
+        <figure class="silence-detail"><a href="space.html" class="space-image-link" aria-label="走进这张照片的三维重建场景"><img src="assets/original-pages/7-024.png" alt="旧厂房内部的光线与空间" loading="lazy" width="5400" height="3600"></a><figcaption>Everyday places, quietly observed.</figcaption></figure>
       </div>
     </article>
-    <article id="spatial-study" class="space-entry" aria-labelledby="space-entry-title">
-      <a class="space-entry-image" href="space.html" aria-label="进入旧厂房交互三维场景"><img src="assets/space/reference.png" alt="穿过旧厂房钢架的光线" loading="lazy" width="2100" height="1400"><span class="space-entry-orbit" aria-hidden="true">↔</span></a>
-      <div class="space-entry-copy"><p class="eyebrow">SPATIAL STUDY 001 / 7—024</p><h3 id="space-entry-title">光留下的地方。</h3><p class="space-entry-en">A place between times.</p><p>从一张摄影，走进一座空间。<br>沿着钢架、天光与时间留下的痕迹，自由观察。</p><a class="space-enter" href="space.html">进入三维空间 <span aria-hidden="true">↗</span></a><span class="space-entry-note">拖动旋转 · 滚轮缩放 · 原图对照</span></div>
-    </article>
-    <article class="exhibit exhibit-current">
-      <div class="current-heading"><div><p class="eyebrow">02 — PHOTOGRAPHY</p><h3>In the current.</h3></div><a class="text-link" data-open="current" href="documents/current.pdf">Explore the series ↗</a></div>
-      <figure><a class="space-image-link" href="park.html" aria-label="进入包含行人与浮光的公园 180 度三维场景"><img src="assets/pages/3-012.jpg" alt="In the current，穿过秋日公园的人" loading="lazy" width="1800" height="1200"><span>走进这张照片 · 180° <span aria-hidden="true">↗</span></span></a></figure>
+<article class="exhibit exhibit-current">
+      <div class="current-heading"><div><p class="eyebrow">02 — PHOTOGRAPHY</p><h3>In the current.</h3></div><a class="text-link" data-open="current" href="collections/current.html">Explore the series ↗</a></div>
+      <figure><a class="space-image-link" href="park.html" aria-label="进入包含行人与浮光的公园 180 度三维场景"><img src="assets/pages/3-012.jpg" alt="In the current，穿过秋日公园的人" loading="lazy" width="1800" height="1200"></a></figure>
       <div class="exhibit-caption"><span>我在洪流之中</span><span>Poznań · Photography</span></div>
     </article>
-    <article id="park-study" class="space-entry park-entry" aria-labelledby="park-entry-title">
-      <a class="space-entry-image" href="park.html" aria-label="进入公园 180 度交互场景"><img src="assets/park/reference.png" alt="青绿草地与秋日公园中经过的行人" loading="lazy" width="1800" height="1200"><span class="space-entry-orbit" aria-hidden="true">180°</span></a>
-      <div class="space-entry-copy"><p class="eyebrow">SPATIAL STUDY 002 / 3—012</p><h3 id="park-entry-title">经过一片浮光。</h3><p class="space-entry-en">A passing moment.</p><p>青绿的草地，褐色的落叶。<br>一个经过的人，和空气里缓慢漂浮的光。</p><a class="space-enter" href="park.html">进入公园场景 <span aria-hidden="true">↗</span></a><span class="space-entry-note">正面 180° · 三渲二 · 空气浮光</span></div>
-    </article>
-    <article class="exhibit exhibit-wolne">
-      <div class="wolne-heading"><div><p class="eyebrow">03 — SPATIAL DESIGN</p><h3>Wolne Tory.</h3></div><div><p class="exhibit-sub">Bridging the Urban Divide.<br>Regeneration of Wolne Tory in Poznań.</p><a class="text-link" data-open="wolne" href="documents/wolne.pdf">View the project ↗</a></div></div>
-      <figure><img src="assets/original-pages/6-033.png" alt="Wolne Tory 阶段方案：整体空间鸟瞰图" loading="lazy" width="5400" height="3375"></figure>
+<article class="exhibit exhibit-wolne">
+      <div class="wolne-heading"><div><p class="eyebrow">03 — SPATIAL DESIGN</p><h3>Wolne Tory.</h3></div><div><p class="exhibit-sub">Bridging the Urban Divide.<br>Regeneration of Wolne Tory in Poznań.</p><a class="text-link" data-open="wolne" href="collections/wolne.html">View the project ↗</a></div></div>
+      <figure><a class="selected-image" href="collections/wolne.html" data-open="wolne" aria-label="打开完整作品系列"><img src="assets/original-pages/6-033.png" alt="Wolne Tory 阶段方案：整体空间鸟瞰图" loading="lazy" width="5400" height="3375"></a></figure>
       <p class="exhibit-caption">Landscape design · 阶段方案</p>
     </article>
   </section>
@@ -102,94 +97,96 @@
         </div>
         <p id="filter-status" role="status"></p>
       </div>
-      <p class="preview-hint">停留片刻，预览作品；点击查看完整系列。</p>
+      <p class="preview-hint">停留片刻，预览作品；点击查看完整系列。</p><button id="gyro-toggle" class="gyro-control" type="button" aria-pressed="false" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="m3 8-2 4 2 4m18-8 2 4-2 4M11 18h2"/></svg><span>开启体感</span></button><p id="gyro-status" class="input-status" role="status"></p>
     </div>
     <div id="project-grid" class="project-grid">
       <article class="project-card" data-project="silence" data-category="photo" style="--cover-bg:#aaa79e">
-        <a class="project-button" href="documents/silence.pdf" data-open="silence" aria-label="查看 Traces of Silence，共 36 页">
+        <a class="project-button" href="collections/silence.html" data-open="silence" aria-label="查看 Traces of Silence，共 36 页">
           <div class="project-picture"><img class="cover-image" src="assets/original-pages/7-034.png" alt="Traces of Silence — 封面" loading="lazy"></div>
-          <div class="project-info"><p class="project-label">Photography</p><h3>Traces of Silence</h3><p class="project-sub">An Aesthetic Journey through Everyday Places</p><div class="project-bottom"><span>36 pages</span><span class="open">Explore ↗</span></div></div>
+          <div class="project-info"><p class="project-label">Photography</p><h3>Traces of Silence</h3><p class="project-sub">An Aesthetic Journey through Everyday Places</p><span class="project-pages">36 pages</span></div>
         </a>
       </article>
       <article class="project-card" data-project="tides" data-category="space" style="--cover-bg:#9aab8a">
-        <a class="project-button" href="documents/tides.pdf" data-open="tides" aria-label="查看 Layered Tides，共 1 页">
+        <a class="project-button" href="collections/tides.html" data-open="tides" aria-label="查看 Layered Tides，共 1 页">
           <div class="project-picture cover-tides"><img class="cover-image" src="assets/pages/8-001.jpg" alt="Layered Tides — 封面" loading="lazy"></div>
-          <div class="project-info"><p class="project-label">Landscape design</p><h3>Layered Tides</h3><p class="project-sub">A small public garden inspired by Minnan cultural forms</p><div class="project-bottom"><span>1 pages</span><span class="open">Explore ↗</span></div></div>
+          <div class="project-info"><p class="project-label">Landscape design</p><h3>Layered Tides</h3><p class="project-sub">A small public garden inspired by Minnan cultural forms</p><span class="project-pages">1 page</span></div>
         </a>
       </article>
       <article class="project-card" data-project="current" data-category="photo" style="--cover-bg:#e8e8e6">
-        <a class="project-button" href="documents/current.pdf" data-open="current" aria-label="查看 In the current，共 22 页">
+        <a class="project-button" href="collections/current.html" data-open="current" aria-label="查看 In the current，共 22 页">
           <div class="project-picture"><img class="cover-image" src="assets/pages/3-001.jpg" alt="In the current — 封面" loading="lazy"></div>
-          <div class="project-info"><p class="project-label">Photography</p><h3>In the current</h3><p class="project-sub">Photography · Poznań</p><div class="project-bottom"><span>22 pages</span><span class="open">Explore ↗</span></div></div>
+          <div class="project-info"><p class="project-label">Photography</p><h3>In the current</h3><p class="project-sub">Photography · Poznań</p><span class="project-pages">22 pages</span></div>
         </a>
       </article>
       <article class="project-card" data-project="wolne" data-category="space" style="--cover-bg:#ffffff">
-        <a class="project-button" href="documents/wolne.pdf" data-open="wolne" aria-label="查看 Wolne Tory，共 40 页">
+        <a class="project-button" href="collections/wolne.html" data-open="wolne" aria-label="查看 Wolne Tory，共 40 页">
           <div class="project-picture"><img class="cover-image" src="assets/original-pages/6-033.png" alt="Wolne Tory — 封面" loading="lazy"></div>
-          <div class="project-info"><p class="project-label">Urban regeneration</p><h3>Wolne Tory</h3><p class="project-sub">Bridging the Urban Divide</p><div class="project-bottom"><span>40 pages</span><span class="open">Explore ↗</span></div></div>
+          <div class="project-info"><p class="project-label">Urban regeneration</p><h3>Wolne Tory</h3><p class="project-sub">Bridging the Urban Divide</p><span class="project-pages">40 pages</span></div>
         </a>
       </article>
       <article class="project-card" data-project="analog" data-category="photo" style="--cover-bg:#39393b">
-        <a class="project-button" href="documents/analog.pdf" data-open="analog" aria-label="查看 Draven’s analoge album，共 20 页">
+        <a class="project-button" href="collections/analog.html" data-open="analog" aria-label="查看 Draven’s analoge album，共 20 页">
           <div class="project-picture"><img class="cover-image" src="assets/pages/1-001.jpg" alt="Draven’s analoge album — 封面" loading="lazy"></div>
-          <div class="project-info"><p class="project-label">Analog photography</p><h3>Draven’s analoge album</h3><p class="project-sub">My first photography with an analog camera</p><div class="project-bottom"><span>20 pages</span><span class="open">Explore ↗</span></div></div>
+          <div class="project-info"><p class="project-label">Analog photography</p><h3>Draven’s analoge album</h3><p class="project-sub">My first photography with an analog camera</p><span class="project-pages">20 pages</span></div>
         </a>
       </article>
       <article class="project-card" data-project="diary" data-category="photo" style="--cover-bg:#ececeb">
-        <a class="project-button" href="documents/diary.pdf" data-open="diary" aria-label="查看 Draven’s diary，共 122 页">
+        <a class="project-button" href="collections/diary.html" data-open="diary" aria-label="查看 Draven’s diary，共 122 页">
           <div class="project-picture"><img class="cover-image" src="assets/pages/2-001.jpg" alt="Draven’s diary — 封面" loading="lazy"></div>
-          <div class="project-info"><p class="project-label">Photo diary</p><h3>Draven’s diary</h3><p class="project-sub">Photography &amp; everyday life</p><div class="project-bottom"><span>122 pages</span><span class="open">Explore ↗</span></div></div>
+          <div class="project-info"><p class="project-label">Photo diary</p><h3>Draven’s diary</h3><p class="project-sub">Photography &amp; everyday life</p><span class="project-pages">122 pages</span></div>
         </a>
       </article>
       <article class="project-card" data-project="mood" data-category="visual" style="--cover-bg:#9c9a92">
-        <a class="project-button" href="documents/mood.pdf" data-open="mood" aria-label="查看 Mood Board，共 1 页">
+        <a class="project-button" href="collections/mood.html" data-open="mood" aria-label="查看 Mood Board，共 1 页">
           <div class="project-picture"><img class="cover-image" src="assets/pages/4-001.jpg" alt="Mood Board — 封面" loading="lazy"></div>
-          <div class="project-info"><p class="project-label">Visual research</p><h3>Mood Board</h3><p class="project-sub">Images, fragments, connections</p><div class="project-bottom"><span>1 pages</span><span class="open">Explore ↗</span></div></div>
+          <div class="project-info"><p class="project-label">Visual research</p><h3>Mood Board</h3><p class="project-sub">Images, fragments, connections</p><span class="project-pages">1 page</span></div>
         </a>
       </article>
       <article class="project-card" data-project="horowit" data-category="visual" style="--cover-bg:#e7e7e3">
-        <a class="project-button" href="documents/horowit.pdf" data-open="horowit" aria-label="查看 Ryszard Horowit，共 1 页">
+        <a class="project-button" href="collections/horowit.html" data-open="horowit" aria-label="查看 Ryszard Horowit，共 1 页">
           <div class="project-picture"><img class="cover-image" src="assets/pages/5-001.jpg" alt="Ryszard Horowit — 封面" loading="lazy"></div>
-          <div class="project-info"><p class="project-label">Image study</p><h3>Ryszard Horowit</h3><p class="project-sub">Reference &amp; response</p><div class="project-bottom"><span>1 pages</span><span class="open">Explore ↗</span></div></div>
+          <div class="project-info"><p class="project-label">Image study</p><h3>Ryszard Horowit</h3><p class="project-sub">Reference &amp; response</p><span class="project-pages">1 page</span></div>
         </a>
       </article>
     </div>
-    <noscript><p>点击作品打开原 PDF；启用 JavaScript 可使用页序画廊与动态预览。</p></noscript>
+    <noscript><p>点击作品可浏览完整页序。启用 JavaScript 可体验交互查看器。</p></noscript>
   </section>
 
-  <section id="about" class="about section" aria-labelledby="about-title">
+  <section id="about" class="about section halftone-section" aria-labelledby="about-title"><div class="halftone-backdrop" aria-hidden="true"><img class="reveal-photo" src="assets/pages/7-015.jpg" alt="" loading="lazy"><img class="halftone-sheet" src="assets/v4/about-halftone.png" alt="" loading="lazy"></div><div class="section-content">
     <p class="eyebrow">ABOUT</p>
     <div class="about-grid">
       <div><h2 id="about-title">汪鼎翊</h2><p class="about-name">Wang Dingyi / Draven</p></div>
       <div class="about-copy"><p>我的学习与创作围绕城市更新、公共艺术和摄影展开。通过摄影记录日常，通过设计思考人与环境的关系。</p><p class="muted">这里收录摄影系列、空间设计与视觉研究，也保留探索过程中的片段。</p><ul class="disciplines"><li>Photography</li><li>Spatial design</li><li>Visual studies</li></ul></div>
     </div>
-  </section>
-  <section id="contact" class="contact section" aria-labelledby="contact-title">
+  </div></section>
+  <section id="contact" class="contact section halftone-section" aria-labelledby="contact-title"><div class="halftone-backdrop" aria-hidden="true"><img class="reveal-photo" src="assets/pages/1-017.jpg" alt="" loading="lazy"><img class="halftone-sheet" src="assets/v4/contact-halftone.png" alt="" loading="lazy"></div><div class="section-content">
     <p class="eyebrow">GET IN TOUCH</p>
     <h2 id="contact-title">Let’s connect.</h2>
     <a class="email-link" href="mailto:dingyiw674@gmail.com">dingyiw674@gmail.com <span aria-hidden="true">↗</span></a>
     <div class="contact-actions"><button id="copy-email" type="button">复制邮箱</button><span id="copy-status" role="status"></span></div>
-  </section>
+  </div></section>
 </main>
 <footer><span>© <span id="year">2026</span> Wang Dingyi / Draven</span><a href="#home">Back to top ↑</a></footer>
 
 <!-- 原生 dialog 提供焦点约束和 Escape 关闭。所有内容来自本地文件。 -->
 <dialog id="project-dialog" aria-labelledby="dialog-title">
-  <div class="dialog-header"><span id="dialog-label"></span><button id="dialog-close" type="button" aria-label="关闭作品">关闭 ✕</button></div>
-  <div class="dialog-body" id="dialog-body">
-    <p id="dialog-subtitle"></p><h2 id="dialog-title"></h2><p id="dialog-description"></p>
-    <div class="gallery-toolbar">
-      <div><button id="prev" type="button" aria-label="上一页">←</button><label for="page-select">Page</label><select id="page-select"></select><span id="page-total"></span><button id="next" type="button" aria-label="下一页">→</button></div>
-      <div><button id="zoom" type="button" aria-pressed="false">放大</button><a id="pdf-link" target="_blank" rel="noopener">原 PDF ↗</a></div>
+  <div class="viewer-shell">
+    <div class="viewer-header">
+      <h2 id="dialog-title"></h2>
+      <div class="viewer-actions"><button id="book-layout" class="glass-control" type="button" aria-label="切换单页阅读" aria-pressed="false" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M3 4h18v16H3z"/></svg></button>
+        <button id="viewer-expand" class="glass-control" type="button" aria-label="展开查看器" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg></button>
+        <button id="dialog-close" class="glass-control" type="button" aria-label="关闭作品"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+      </div>
     </div>
     <div class="gallery-frame">
-      <div id="image-stage"><img id="gallery-image" alt=""></div>
-      <button id="stage-prev" class="stage-arrow stage-arrow-prev" type="button" aria-label="作品上一页">‹</button>
-      <button id="stage-next" class="stage-arrow stage-arrow-next" type="button" aria-label="作品下一页">›</button>
+      <div id="image-stage"><img id="gallery-image" alt="" draggable="false"></div><div id="diary-book" hidden><div class="book-spread"><button class="book-page book-left" aria-label="翻到前一组双页"><img alt="" draggable="false"><span class="book-page-number"></span></button><button class="book-page book-right" aria-label="翻到后一组双页"><img alt="" draggable="false"><span class="book-page-number"></span></button></div><div class="book-turn" aria-hidden="true"><div class="turn-face turn-front"><img alt="" draggable="false"></div><div class="turn-face turn-back"><img alt="" draggable="false"></div></div></div>
+      <button id="stage-prev" class="glass-control stage-arrow stage-arrow-prev" type="button" aria-label="作品上一页"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 5-7 7 7 7"/></svg></button>
+      <button id="stage-next" class="glass-control stage-arrow stage-arrow-next" type="button" aria-label="作品下一页"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 5 7 7-7 7"/></svg></button>
     </div>
-    <p id="page-status" role="status"></p>
-    <div id="thumbnails" aria-label="页面缩略图"></div>
-    <p id="project-note"></p>
+    <div class="viewer-footer">
+      <div id="thumbnails" role="group" aria-label="页面缩略图"></div>
+      <p id="page-status" role="status" aria-live="polite"></p><span id="viewer-load-status" role="status"></span>
+    </div>
   </div>
 </dialog>
 </body>

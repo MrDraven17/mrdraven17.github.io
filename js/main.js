@@ -29,7 +29,7 @@
     });
     // 根据导航下方的实际展区选择深浅文字，不给照片加白色硬边。
     const probe = 32;
-    const dark = ["#home",".exhibit-current"].some(selector => {
+    const dark = ["#home",".exhibit-current","#contact"].some(selector => {
       const bounds = $(selector).getBoundingClientRect();
       return bounds.top <= probe && bounds.bottom > probe;
     });

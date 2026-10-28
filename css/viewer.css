@@ -1,0 +1,46 @@
+/* Glass surrounds the artwork; image pixels stay sharp and unfiltered. */
+#project-dialog { width:min(1480px,94vw); height:min(1100px,94dvh); max-width:none; max-height:96dvh; margin:auto; padding:0; border:1px solid #ffffff52; border-radius:26px; color:#f7f8f7; color-scheme:dark; background:linear-gradient(145deg,#d6e4df30,#26332e99 65%,#d5e3dc18); backdrop-filter:blur(32px) saturate(1.15); -webkit-backdrop-filter:blur(32px) saturate(1.15); box-shadow:0 28px 90px #0005,inset 0 1px 0 #ffffff66,inset 0 -1px 0 #ffffff1a; overflow:hidden; }
+#project-dialog[open] { display:block; }
+#project-dialog::backdrop { background:#15201bd1; backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
+#project-dialog.is-expanded { width:98vw; height:98dvh; max-height:98dvh; }
+.viewer-shell { height:100%; display:grid; grid-template-rows:auto minmax(0,1fr) 64px; gap:18px; padding:24px 62px 18px; }
+.viewer-header { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+#dialog-title { font-size:clamp(19px,2vw,29px); line-height:1.25; letter-spacing:-.025em; font-weight:600; }
+.viewer-actions { display:flex; gap:10px; flex-shrink:0; }
+#project-dialog .glass-control { display:grid; place-items:center; flex-shrink:0; width:40px; height:40px; padding:11px; border-radius:50%; color:#f7faf8; border:1px solid #ffffff55; background:linear-gradient(145deg,#ffffff28,#ffffff0b); box-shadow:inset 0 1px 0 #ffffff77,0 4px 12px #0002; backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); }
+#project-dialog .glass-control:hover { background:#ffffff30; }
+#project-dialog .glass-control svg { width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+#project-dialog .glass-control:disabled { opacity:.25; cursor:default; }
+#project-dialog .gallery-frame { position:relative; min-height:0; }
+#project-dialog #image-stage { height:100%; border:0; background:none; border-radius:4px; overflow:hidden; }
+#project-dialog #gallery-image { width:100%; height:100%; object-fit:contain; }
+#project-dialog .stage-arrow { position:absolute; top:50%; transform:translateY(-50%); }
+#project-dialog .stage-arrow-prev { left:-50px; }
+#project-dialog .stage-arrow-next { right:-50px; }
+.viewer-footer { position:relative; display:grid; grid-template-columns:minmax(70px,1fr) minmax(0,384px) minmax(70px,1fr); align-items:center; gap:12px; }
+#project-dialog #thumbnails { grid-column:2; display:flex; gap:12px; padding:5px 3px; max-width:100%; overflow-x:auto; scrollbar-width:none; scroll-behavior:auto; }
+#project-dialog #thumbnails::-webkit-scrollbar { display:none; }
+#project-dialog #thumbnails button { flex:0 0 60px; width:60px; height:44px; border:1px solid transparent; border-radius:5px; padding:2px; background:transparent; opacity:.62; }
+#project-dialog #thumbnails button:hover { opacity:1; }
+#project-dialog #thumbnails button[aria-pressed="true"] { opacity:1; border-color:#ffffffe6; background:#ffffff12; }
+#project-dialog #thumbnails img { width:100%; height:100%; margin:0; border-radius:3px; object-fit:contain; }
+#project-dialog #page-status { grid-column:3; margin:0; justify-self:end; font-size:12px; color:#f3f5f2d9; white-space:nowrap; font-variant-numeric:tabular-nums; }
+#project-dialog :focus-visible { outline:2px solid #fff; outline-offset:2px; }
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))) { #project-dialog { background:#303a35; } }
+@media(max-width:600px) {
+ #project-dialog { width:96vw; height:fit-content; border-radius:19px; }
+ #project-dialog.is-expanded { height:98dvh; }
+ .viewer-shell { height:auto; padding:16px 12px 12px; gap:12px; grid-template-rows:auto minmax(0,1fr) 56px; }
+ #project-dialog.is-expanded .viewer-shell { height:100%; }
+ #project-dialog:not(.is-expanded) .gallery-frame { height:min(62dvh,calc((96vw - 26px) / var(--image-ratio,1.5))); }
+ #dialog-title { font-size:19px; }
+ .viewer-actions { gap:6px; }
+ #project-dialog .glass-control { width:38px; height:38px; padding:10px; }
+ #project-dialog .stage-arrow-prev { left:4px; }
+ #project-dialog .stage-arrow-next { right:4px; }
+ .viewer-footer { grid-template-columns:minmax(0,1fr) 52px; gap:10px; }
+ #project-dialog #thumbnails { grid-column:1; }
+ #project-dialog #page-status { grid-column:2; font-size:11px; }
+ #project-dialog #thumbnails button { flex-basis:48px; width:48px; height:38px; }
+}
+@media(max-height:500px) { .viewer-shell { padding-top:10px; padding-bottom:8px; gap:8px; grid-template-rows:auto minmax(0,1fr) 44px; } #project-dialog { height:96dvh; } }

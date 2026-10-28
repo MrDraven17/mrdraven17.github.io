@@ -1,133 +1,20 @@
-/**
- * 作品详情独立初始化，不依赖悬停预览。
- * 卡片始终是原 PDF 链接：只有成功打开详情后才取消默认导航。
- */
-(function () {
-  "use strict";
-  const dialog = document.getElementById("project-dialog");
-  const projects = window.PORTFOLIO && window.PORTFOLIO.projects;
-  if (!dialog || !projects) return;
-  const $ = id => document.getElementById(id);
-  let project = null;
-  let page = 0;
-  let source = null;
-  const thumbnails = $("thumbnails");
-  const selector = $("page-select");
-
-  function render() {
-    $("gallery-image").src = project.images[page];
-    $("gallery-image").alt = project.title + " — 第 " + (page + 1) + " 页";
-    selector.value = String(page);
-    $("page-status").textContent = "Page " + (page + 1) + " of " + project.count;
-    ["prev","stage-prev"].forEach(id => {
-      $(id).disabled = page === 0;
-      $(id).hidden = project.count === 1;
-    });
-    ["next","stage-next"].forEach(id => {
-      $(id).disabled = page === project.count - 1;
-      $(id).hidden = project.count === 1;
-    });
-    Array.from(thumbnails.children).forEach((button,index) => {
-      button.setAttribute("aria-pressed", String(index === page));
-    });
-    const active = thumbnails.children[page];
-    if (active) {
-      const delta = active.getBoundingClientRect().left - thumbnails.getBoundingClientRect().left;
-      thumbnails.scrollLeft += delta - thumbnails.clientWidth / 2 + active.clientWidth / 2;
-    }
-    $("image-stage").scrollTop = 0;
-  }
-  function change(delta) {
-    if (!project) return;
-    page = Math.max(0, Math.min(project.count - 1, page + delta));
-    render();
-  }
-  function open(item, link) {
-    if (typeof dialog.showModal !== "function") return false;
-    document.dispatchEvent(new CustomEvent("portfolio:stop-preview"));
-    project = item; page = 0; source = link;
-    $("dialog-label").textContent = item.label;
-    $("dialog-title").textContent = item.title;
-    $("dialog-subtitle").textContent = item.subtitle;
-    $("dialog-description").textContent = item.description;
-    $("project-note").textContent = item.note;
-    $("pdf-link").href = item.pdf;
-    $("page-total").textContent = "/ " + item.count;
-    selector.replaceChildren();
-    thumbnails.replaceChildren();
-    item.images.forEach((path,index) => {
-      const option = document.createElement("option");
-      option.value = String(index);
-      option.textContent = String(index + 1);
-      selector.append(option);
-      const button = document.createElement("button");
-      button.type = "button";
-      button.dataset.page = String(index);
-      button.setAttribute("aria-label", "第 " + (index + 1) + " 页");
-      const image = document.createElement("img");
-      image.src = path; image.alt = ""; image.loading = "lazy";
-      button.append(image,document.createTextNode(String(index + 1)));
-      thumbnails.append(button);
-    });
-    $("image-stage").classList.remove("zoomed");
-    $("zoom").textContent = "放大";
-    $("zoom").setAttribute("aria-pressed","false");
-    if (!dialog.open) dialog.showModal();
-    render();
-    document.body.classList.add("dialog-open");
-    // 玻璃查看器中滚动发生在 dialog-body；打开时回到顶部，保证从第一页开始。
-    const body = $("dialog-body");
-    if (body) body.scrollTop = 0;
-    $("dialog-close").focus();
-    return true;
-  }
-
-  // 委托绑定到 document；点击图片、标题或文字都使用同一项目入口。
-  document.addEventListener("click", function (event) {
-    const link = event.target.closest("a[data-open]");
-    if (!link || event.defaultPrevented || event.button > 0 ||
-        event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
-    const item = projects.find(p => p.id === link.dataset.open);
-    if (!item) return;
-    try {
-      if (open(item,link)) event.preventDefault();
-    } catch (error) {
-      // 弹窗异常时继续执行 a.href，用户仍能打开原 PDF。
-      if (dialog.open) dialog.close();
-      document.body.classList.remove("dialog-open");
-      console.error("Project detail fallback:",error);
-    }
-  });
-  ["prev","stage-prev"].forEach(id => $(id).addEventListener("click", () => change(-1)));
-  ["next","stage-next"].forEach(id => $(id).addEventListener("click", () => change(1)));
-  selector.addEventListener("change", () => {
-    const next = Number(selector.value);
-    if (project && Number.isInteger(next) && next >= 0 && next < project.count) { page = next; render(); }
-  });
-  thumbnails.addEventListener("click", event => {
-    const button = event.target.closest("button[data-page]");
-    if (!button) return;
-    page = Number(button.dataset.page); render();
-  });
-  $("zoom").addEventListener("click", function () {
-    const on = $("image-stage").classList.toggle("zoomed");
-    $("zoom").textContent = on ? "适应窗口" : "放大";
-    $("zoom").setAttribute("aria-pressed",String(on));
-  });
-  $("dialog-close").addEventListener("click", () => dialog.close());
-  dialog.addEventListener("close", () => {
-    document.body.classList.remove("dialog-open");
-    if (source) source.focus({preventScroll:true});
-  });
-  dialog.addEventListener("keydown", event => {
-    if (event.target.tagName === "SELECT") return;
-    if (event.key === "ArrowLeft") { event.preventDefault(); change(-1); }
-    if (event.key === "ArrowRight") { event.preventDefault(); change(1); }
-  });
-  dialog.addEventListener("click", event => {
-    if (event.target !== dialog) return;
-    const bounds = dialog.getBoundingClientRect();
-    if (event.clientX < bounds.left || event.clientX > bounds.right ||
-        event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
-  });
+/* v4 artwork reader: compact image stage and a paired-page diary with two-sided paper turns. */
+(()=>{'use strict';const $=id=>document.getElementById(id),dialog=$('project-dialog'),projects=window.PORTFOLIO.projects,thumbs=$('thumbnails'),image=$('gallery-image'),book=$('diary-book'),leaf=book.querySelector('.book-turn'),spread=book.querySelector('.book-spread');const left=book.querySelector('.book-left'),right=book.querySelector('.book-right');let project=null,page=0,source=null,single=false,busy=false,animation=null,token=0,ratio=1.5;const loaded=new Map();
+function isBook(){return project?.id==='diary'&&!single}function maxPage(){return isBook()?Math.floor((project.count-1)/2)*2:project.count-1}function announce(text){$('viewer-load-status').textContent=text}
+function load(src){if(!src)return Promise.resolve();if(loaded.has(src))return loaded.get(src);const promise=new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>{loaded.delete(src);reject(Error('image unavailable'))};im.src=src});loaded.set(src,promise);return promise}
+function setPage(button,index){const img=button.querySelector('img'),number=button.querySelector('.book-page-number');if(index<project.count){img.src=project.images[index];img.alt=project.title+' — 第 '+(index+1)+' 页';img.hidden=false;number.textContent=index+1}else{img.hidden=true;number.textContent=''}}
+function sizeBook(){if(!isBook()||!dialog.open)return;const w=book.clientWidth,h=book.clientHeight,leafSize=Math.min(w/2,h);spread.style.width=leafSize*2+'px';spread.style.height=leafSize+'px';leaf.style.width=leafSize+'px';leaf.style.height=leafSize+'px';leaf.style.marginTop=-leafSize/2+'px';leaf.style.left=leaf.classList.contains('backward')?(w/2-leafSize)+'px':w/2+'px'}
+function fit(){if(!project)return;const r=isBook()?2:ratio;dialog.style.setProperty('--image-ratio',String(r));const available=Math.max(160,innerHeight*.92-150);dialog.style.setProperty('--viewer-width',Math.max(Math.min(420,innerWidth*.96),Math.min(innerWidth*.96,available*r+32))+'px');requestAnimationFrame(sizeBook)}
+function controls(){const start=page+1,end=Math.min(project.count,page+2);$('page-status').textContent=isBook()?start+'–'+end+' / '+project.count:start+' / '+project.count;for(const id of ['stage-prev','stage-next'])$(id).hidden=project.count===1;$('stage-prev').disabled=page===0;$('stage-next').disabled=page>=maxPage();left.disabled=page===0;right.disabled=page>=maxPage();['stage-prev','stage-next','book-layout'].forEach(id=>$(id).setAttribute('aria-disabled',String(busy)));$('book-layout').disabled=false;[...thumbs.children].forEach((b,i)=>b.setAttribute('aria-pressed',String(i===page||(isBook()&&i===page+1))));const active=thumbs.children[page];if(active){thumbs.scrollLeft+=active.getBoundingClientRect().left-thumbs.getBoundingClientRect().left-thumbs.clientWidth/2+active.clientWidth/2}}
+function render(){if(!project)return;dialog.classList.toggle('diary-mode',project.id==='diary');dialog.classList.toggle('single-page',single);book.hidden=!isBook();$('book-layout').hidden=project.id!=='diary';$('book-layout').setAttribute('aria-pressed',String(single));$('book-layout').setAttribute('aria-label',single?'切换双页阅读':'切换单页阅读');if(isBook()){setPage(left,page);setPage(right,page+1);ratio=2;const mine=token;announce('');Promise.all([load(project.images[page]),load(project.images[page+1])]).catch(()=>{if(mine===token)announce('页面暂未载入，请重试翻页。')})}else{image.src=project.images[page];image.alt=project.title+' — 第 '+(page+1)+' 页';announce('');$('image-stage').scrollTop=0}controls();fit();[page+2,page+3].forEach(i=>{if(i<project.count)load(project.images[i]).catch(()=>{})})}
+image.addEventListener('load',()=>{if(!isBook()&&image.naturalWidth){ratio=image.naturalWidth/image.naturalHeight;announce('');fit()}});image.addEventListener('error',()=>announce('页面暂未载入，请重新选择缩略图。'));
+async function go(delta){if(!project||busy)return;const step=isBook()?2:1,target=Math.max(0,Math.min(maxPage(),page+delta*step));if(target===page)return;if(!isBook()||!window.PortfolioMotion.enabled||typeof leaf.animate!=='function'){page=target;render();return}busy=true;controls();const mine=token,previous=page;try{await Promise.all([load(project.images[target]),load(project.images[target+1]),load(project.images[page]),load(project.images[page+1])]);if(mine!==token||!dialog.open)return;const back=delta<0;leaf.classList.toggle('backward',back);const front=leaf.querySelector('.turn-front img'),reverse=leaf.querySelector('.turn-back img');front.src=project.images[back?previous:previous+1];reverse.src=project.images[back?target+1:target];if(back)setPage(left,target);else setPage(right,target+1);leaf.classList.add('turning');sizeBook();animation=leaf.animate([{transform:'rotateY(0deg)'},{transform:'rotateY('+(back?180:-180)+'deg)'}],{duration:window.PortfolioMotion.enabled?780:0,easing:'cubic-bezier(.3,.1,.15,1)',fill:'forwards'});await animation.finished;if(mine!==token)return;page=target}catch(err){if(mine===token&&dialog.open)announce('未能完成翻页，请重试。')}finally{if(mine===token){animation?.cancel();animation=null;leaf.classList.remove('turning','backward');busy=false;render()}}}
+function open(item,link){if(typeof dialog.showModal!=='function')return false;token++;animation?.cancel();animation=null;busy=false;leaf.classList.remove('turning','backward');document.dispatchEvent(new CustomEvent('portfolio:stop-preview'));project=item;page=0;single=false;ratio=item.id==='diary'?2:1.5;source=link;$('dialog-title').textContent=item.title;thumbs.replaceChildren();item.images.forEach((src,i)=>{const b=document.createElement('button');b.type='button';b.dataset.page=i;b.setAttribute('aria-label','第 '+(i+1)+' 页');const img=new Image();img.src=src;img.alt='';img.loading='lazy';b.append(img);thumbs.append(b)});dialog.classList.remove('is-expanded');$('viewer-expand').setAttribute('aria-pressed','false');$('viewer-expand').setAttribute('aria-label','展开查看器');if(!dialog.open)dialog.showModal();document.body.classList.add('dialog-open');document.body.classList.remove('cursor-ready');render();$('dialog-close').focus();return true}
+document.addEventListener('click',e=>{const a=e.target.closest('a[data-open]');if(!a||e.defaultPrevented||e.button>0||e.ctrlKey||e.metaKey||e.shiftKey||e.altKey)return;const p=projects.find(p=>p.id===a.dataset.open);if(!p)return;try{if(open(p,a))e.preventDefault()}catch(err){if(dialog.open)dialog.close();document.body.classList.remove('dialog-open');console.error(err)}});
+$('stage-prev').onclick=()=>go(-1);$('stage-next').onclick=()=>go(1);left.onclick=()=>go(-1);right.onclick=()=>go(1);
+thumbs.addEventListener('click',e=>{const b=e.target.closest('button[data-page]');if(!b||busy)return;const n=Number(b.dataset.page);page=isBook()?Math.floor(n/2)*2:n;render()});
+$('book-layout').onclick=()=>{if(busy)return;single=!single;if(!single)page=Math.floor(page/2)*2;ratio=single?1:2;render()};$('viewer-expand').onclick=()=>{const expanded=dialog.classList.toggle('is-expanded');$('viewer-expand').setAttribute('aria-pressed',String(expanded));$('viewer-expand').setAttribute('aria-label',expanded?'收起查看器':'展开查看器');fit()};$('dialog-close').onclick=()=>dialog.close();dialog.addEventListener('close',()=>{token++;animation?.cancel();animation=null;busy=false;leaf.classList.remove('turning','backward');document.body.classList.remove('dialog-open');source?.focus({preventScroll:true})});document.addEventListener('keydown',e=>{if(!dialog.open)return;if(e.key==='ArrowLeft'){e.preventDefault();go(-1)}if(e.key==='ArrowRight'){e.preventDefault();go(1)}if(e.key==='Home'&&!busy){e.preventDefault();page=0;render()}if(e.key==='End'&&!busy){e.preventDefault();page=maxPage();render()}});dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close()}});
+let start=null,suppress=false;book.addEventListener('pointerdown',e=>{if(e.pointerType==='touch'){start={x:e.clientX,y:e.clientY};suppress=false}});book.addEventListener('pointerup',e=>{if(!start)return;const dx=e.clientX-start.x,dy=e.clientY-start.y;start=null;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.3){suppress=true;go(dx<0?1:-1)}});book.addEventListener('pointercancel',()=>start=null);book.addEventListener('click',e=>{if(suppress){e.preventDefault();e.stopImmediatePropagation();suppress=false}},true);
+let drag=null,skipClick=false;thumbs.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button===0){drag={x:e.clientX,left:thumbs.scrollLeft};skipClick=false}});thumbs.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-drag.x;if(Math.abs(dx)>6){thumbs.setPointerCapture(e.pointerId);skipClick=true;thumbs.scrollLeft=drag.left-dx}});thumbs.addEventListener('pointerup',()=>drag=null);thumbs.addEventListener('pointercancel',()=>drag=null);thumbs.addEventListener('click',e=>{if(skipClick){e.preventDefault();e.stopImmediatePropagation();skipClick=false}},true);thumbs.addEventListener('dragstart',e=>e.preventDefault());
+document.addEventListener('portfolio:motion',()=>{if(!window.PortfolioMotion.enabled&&animation)animation.finish()});new ResizeObserver(sizeBook).observe(book);addEventListener('resize',fit);
 })();
