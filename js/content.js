@@ -80,6 +80,7 @@ window.PORTFOLIO = {
     },
     {
       "id": "current",
+      "model": "park.html",
       "title": "In the current",
       "subtitle": "Photography · Poznań",
       "category": "photo",
@@ -414,7 +415,7 @@ window.PORTFOLIO = {
       "category": "space",
       "label": "Spatial design",
       "count": 9,
-      "cover": "assets/eternal/board.jpg",
+      "cover": "assets/eternal/cover.jpg",
       "images": [
         "assets/eternal/board.jpg",
         "assets/eternal/presentation-1.jpg",
@@ -447,12 +448,13 @@ window.PORTFOLIO = {
     },
     {
       "id": "rendering",
+      "video": "assets/rendering/sequence.mp4",
       "title": "Rendering studies",
       "subtitle": "Light, atmosphere & moving image",
       "category": "visual",
       "label": "Visual studies",
       "count": 3,
-      "cover": "assets/rendering/Image10.jpg",
+      "cover": "assets/rendering/Image12.jpg",
       "images": [
         "assets/rendering/Image10.jpg",
         "assets/rendering/Image11.jpg",
@@ -464,8 +466,7 @@ window.PORTFOLIO = {
         "assets/rendering/Image12.jpg"
       ],
       "description": "光线、材质与空间氛围的渲染练习。",
-      "note": "三幅静帧与一段动态影像。",
-      "video": "assets/rendering/sequence.mp4"
+      "note": "三幅静帧与一段动态影像。"
     }
   ]
 };

@@ -21,6 +21,11 @@
   function playPreview(item) {
     const { card, project } = item;
     const picture = card.querySelector(".project-picture");
+    if(project.video){
+      const video=document.createElement('video');video.className='card-video';video.muted=true;video.loop=true;video.playsInline=true;video.preload='none';video.src=project.video;video.setAttribute('aria-hidden','true');picture.append(video);
+      let cancelled=false;video.play().then(()=>{if(cancelled)video.pause();else card.classList.add('is-playing')}).catch(()=>video.remove());
+      playbackCleanup=()=>{cancelled=true;video.pause();video.removeAttribute('src');video.load();video.remove();card.classList.remove('is-playing')};return;
+    }
     const windowNode = element("div", "preview-window");
     windowNode.setAttribute("aria-hidden", "true");
     const layers = [element("img"), element("img")];
@@ -32,7 +37,7 @@
     let visibleLayer = 0;
     let current = 0;
     let loading = false;
-    const pages = project.preview && project.preview.length ? project.preview : project.images.slice(1, 5);
+    const pages = project.id === "eternal" ? project.images : project.preview && project.preview.length ? project.preview : project.images.slice(1, 5);
     const longPage = project.id === "tides";
     const sources = pages.length ? pages : [project.images[0]];
 
@@ -47,7 +52,7 @@
         layers.forEach((layer, i) => layer.classList.toggle("active", i === slot));
         visibleLayer = slot;
         card.classList.add("is-playing");
-        if (longPage) {
+        if (longPage || (project.id === "eternal" && current === 0)) {
           windowNode.classList.add("long-page");
           const distance = Math.max(0, picture.clientWidth * img.naturalHeight / img.naturalWidth - picture.clientHeight);
           if (distance > 0 && typeof img.animate === "function") {
@@ -56,15 +61,17 @@
               { transform: "translateY(0)", offset: 0.08 },
               { transform: "translateY(-" + distance + "px)", offset: 0.92 },
               { transform: "translateY(-" + distance + "px)", offset: 1 }
-            ], { duration: 16000, iterations: Infinity, direction: "alternate", easing: "ease-in-out" });
-          }
-        }
+            ], { duration: longPage ? 16000 : Math.max(16000, distance / 24 * 1000), iterations: longPage ? Infinity : 1, direction: longPage ? "alternate" : "normal", easing: "ease-in-out", fill: "forwards" });
+            if (project.id === 'eternal') animation.finished.then(()=>{if(!cancelled)interval=setTimeout(next,900)}).catch(()=>{});
+          } else if(project.id === 'eternal') interval=setTimeout(next,3200);
+        } else if(project.id === 'eternal') interval=setTimeout(next,3200);
       };
       img.onerror = function () { loading = false; };
       img.src = source;
     }
+    function next(){if(cancelled)return;animation?.cancel();animation=null;windowNode.classList.remove('long-page');current=(current+1)%sources.length;display(sources[current],false)}
     display(sources[0], true);
-    if (!longPage && sources.length > 1) {
+    if (!longPage && project.id !== 'eternal' && sources.length > 1) {
       interval = setInterval(function () {
         if (loading || cancelled) return;
         current = (current + 1) % sources.length;
@@ -73,7 +80,7 @@
     }
     playbackCleanup = function () {
       cancelled = true;
-      clearInterval(interval);
+      clearInterval(interval); clearTimeout(interval);
       if (animation) animation.cancel();
       layers.forEach(img => { img.onload = img.onerror = null; });
       card.classList.remove("is-playing");

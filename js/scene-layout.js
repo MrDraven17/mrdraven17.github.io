@@ -1,0 +1,2 @@
+/* Translated headers can wrap on narrow screens; panels follow their actual height. */
+(()=>{const header=document.querySelector('.space-header');if(!header)return;const update=()=>document.documentElement.style.setProperty('--scene-header-bottom',Math.ceil(header.getBoundingClientRect().bottom)+'px');new ResizeObserver(update).observe(header);addEventListener('resize',update);document.addEventListener('portfolio:language',update);update()})();
