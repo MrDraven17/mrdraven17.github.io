@@ -8,8 +8,8 @@
   <link rel="icon" href="data:,">
   <title>光留下的地方 — Draven / Spatial study 01</title>
   <link rel="stylesheet" href="css/space.css?v=f6aef003b797">
-  <script defer src="js/space-loader.js?v=9497a064a512"></script>
-</head>
+  <script defer src="js/space-loader.js?v=612e424ebfc1"></script>
+<script type="importmap">{"imports":{"three":"./js/vendor/three/build/three.module.js"}}</script><script type="module" src="js/scene-detail-v5.js?v=9d222ea1f48a"></script></head>
 <body>
   <main id="space-app">
     <img id="space-cover" src="assets/space/reference.png" alt="参考照片：阳光穿过天窗，照进锈蚀钢架构成的旧厂房" fetchpriority="high">
@@ -27,7 +27,7 @@
       <label for="space-quality">画面质量</label>
       <select id="space-quality"><option value="auto">自动适配</option><option value="high">精细</option><option value="low">流畅</option></select>
       <button id="space-film" type="button" aria-pressed="true">胶片效果 <span>开</span></button>
-      <button id="space-tour" type="button" aria-pressed="false">自动巡游 <span>关</span></button>
+      <button id="space-tour" type="button" aria-pressed="true">自动巡游 <span>开</span></button>
       <p>拖动旋转 · 滚轮缩放 · 右键平移<br>触屏：单指旋转，双指缩放 / 平移<br>键盘：方向键旋转，＋ / − 缩放，Home 复位</p>
       
     </aside>
@@ -51,7 +51,7 @@
       <div class="space-views" role="group" aria-label="选择观察视角">
         <button type="button" data-space-view="photo" aria-pressed="true">原图视角</button>
         <button type="button" data-space-view="aisle" aria-pressed="false">侧跨观察</button>
-        <button type="button" data-space-view="overview" aria-pressed="false">结构全景</button>
+        <button type="button" data-space-view="overview" aria-pressed="false">内部纵览</button>
       </div>
       <p class="space-credit">WANG DINGYI <span>© 2026</span></p>
     </footer>

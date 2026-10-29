@@ -1,4 +1,3 @@
-/** 原封面规则保留；silence 与 wolne 根据 2026-10-21 新要求使用指定原 PDF 页面。 */
 window.PORTFOLIO = {
   "projects": [
     {
@@ -76,7 +75,8 @@ window.PORTFOLIO = {
       "coverBackground": "#9aab8a",
       "preview": [
         "assets/pages/8-001.jpg"
-      ]
+      ],
+      "model": "model.html?project=tides"
     },
     {
       "id": "current",
@@ -180,7 +180,8 @@ window.PORTFOLIO = {
         "assets/original-pages/6-033.png",
         "assets/pages/6-034.jpg",
         "assets/pages/6-035.jpg"
-      ]
+      ],
+      "model": "model.html?project=wolne"
     },
     {
       "id": "analog",
@@ -405,6 +406,66 @@ window.PORTFOLIO = {
       "preview": [
         "assets/pages/5-001.jpg"
       ]
+    },
+    {
+      "id": "eternal",
+      "title": "Eternal Flow",
+      "subtitle": "A public space design along the Warta River",
+      "category": "space",
+      "label": "Spatial design",
+      "count": 9,
+      "cover": "assets/eternal/board.jpg",
+      "images": [
+        "assets/eternal/board.jpg",
+        "assets/eternal/presentation-1.jpg",
+        "assets/eternal/presentation-2.jpg",
+        "assets/eternal/presentation-3.jpg",
+        "assets/eternal/presentation-4.jpg",
+        "assets/eternal/presentation-5.jpg",
+        "assets/eternal/presentation-6.jpg",
+        "assets/eternal/presentation-7.jpg",
+        "assets/eternal/presentation-8.jpg"
+      ],
+      "preview": [
+        "assets/eternal/board.jpg",
+        "assets/eternal/presentation-1.jpg",
+        "assets/eternal/presentation-8.jpg"
+      ],
+      "description": "瓦尔塔河畔公共空间设计。汪鼎翊、张欣悦与李子瑞合作作品。",
+      "note": "总展板与八页方案演示，保留原顺序。",
+      "pdf": "documents/eternal-board.pdf",
+      "documents": [
+        {
+          "label": "总展板 PDF",
+          "url": "documents/eternal-board.pdf"
+        },
+        {
+          "label": "方案演示 PDF",
+          "url": "documents/eternal-presentation.pdf"
+        }
+      ]
+    },
+    {
+      "id": "rendering",
+      "title": "Rendering studies",
+      "subtitle": "Light, atmosphere & moving image",
+      "category": "visual",
+      "label": "Visual studies",
+      "count": 3,
+      "cover": "assets/rendering/Image10.jpg",
+      "images": [
+        "assets/rendering/Image10.jpg",
+        "assets/rendering/Image11.jpg",
+        "assets/rendering/Image12.jpg"
+      ],
+      "preview": [
+        "assets/rendering/Image10.jpg",
+        "assets/rendering/Image11.jpg",
+        "assets/rendering/Image12.jpg"
+      ],
+      "description": "光线、材质与空间氛围的渲染练习。",
+      "note": "三幅静帧与一段动态影像。",
+      "video": "assets/rendering/sequence.mp4"
     }
   ]
 };

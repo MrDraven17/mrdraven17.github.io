@@ -11,6 +11,6 @@
     document.querySelectorAll('#space-compare,#space-settings-button,[data-space-view]').forEach(function(button){button.disabled=true;});
   };
   var script=document.createElement('script');
-  script.src=document.getElementById('space-app').dataset.scene==='park'?'js/park.bundle.js':'js/space.bundle.js';script.onerror=function(){window.spaceFailure('三维资源加载失败，请重新加载。');};
+  script.src=document.getElementById('space-app').dataset.scene==='park'?'js/park.bundle.js?v=522562ee4491':'js/space.bundle.js?v=6938a3185e2e';script.onerror=function(){window.spaceFailure('三维资源加载失败，请重新加载。');};
   document.head.appendChild(script);
 })();
