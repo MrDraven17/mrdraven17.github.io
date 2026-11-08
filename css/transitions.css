@@ -1,0 +1,26 @@
+/* r04 — section transitions (js/transitions.js). */
+.curtain{position:relative}
+.curtain>#home{position:sticky;top:0;z-index:0}
+.curtain>#home .hero-background{filter:brightness(calc(1 - var(--cover,0)*.45))}
+.curtain>#home .signature-content{opacity:calc(1 - var(--cover,0)*.6)}
+.curtain>#about{z-index:1}
+
+/* Burn edge: a zero-height marker before the next section; its canvas reaches up over the section before. */
+.burn-edge{position:relative;height:0;z-index:4;pointer-events:none}
+.burn-edge canvas{position:absolute;left:0;bottom:-1px;width:100%;height:var(--band,160px);image-rendering:pixelated;image-rendering:crisp-edges;filter:drop-shadow(0 0 3px #ffffff40)}
+.about{border-bottom:0}
+.selected-section{background:#e9ece5}
+
+/* Halftone screens grow out of the flat colour at the edges instead of starting on a hard line. */
+#about .halftone-backdrop{-webkit-mask-image:linear-gradient(#0000,#000 280px,#000 calc(100% - 300px),#0000004d);mask-image:linear-gradient(#0000,#000 280px,#000 calc(100% - 300px),#0000004d)}
+#contact .halftone-backdrop{-webkit-mask-image:linear-gradient(#0000,#0003 90px,#000 320px);mask-image:linear-gradient(#0000,#0003 90px,#000 320px)}
+.exhibit-current .current-backdrop{--bleed:180px;-webkit-mask-image:linear-gradient(#0000 var(--bleed),#000 calc(var(--bleed) + 300px),#000 calc(100% - var(--bleed) - 280px),#0000 calc(100% - var(--bleed)));mask-image:linear-gradient(#0000 var(--bleed),#000 calc(var(--bleed) + 300px),#000 calc(100% - var(--bleed) - 280px),#0000 calc(100% - var(--bleed)))}
+@media(max-width:700px){.exhibit-current .current-backdrop{--bleed:100px}}
+
+/* Headings rise in. Only applied by JS, so nothing hides without it. */
+.rise{opacity:0;transform:translate3d(0,42px,0);clip-path:inset(0 0 100% 0);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform 1.1s cubic-bezier(.16,.84,.24,1),clip-path 1.1s cubic-bezier(.16,.84,.24,1)}
+.rise.risen{opacity:1;transform:none;clip-path:inset(-20% -5% -30% -5%)}
+h2.rise{transition-delay:.08s}.section-heading>p.rise,.about-name.rise{transition-delay:.18s}.about-statement.rise{transition-delay:.26s}
+body.reduced #home{transform:none}
+body.reduced .rise{opacity:1;transform:none;clip-path:none;transition:none}
+@media(prefers-reduced-motion:reduce){.rise{opacity:1;transform:none;clip-path:none;transition:none}}

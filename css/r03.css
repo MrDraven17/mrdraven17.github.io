@@ -1,0 +1,33 @@
+/* r03 — About moves directly under the hero and becomes an introduction:
+   name + statement left, photo card right, education as a three-step row below. */
+.about-intro .section-content{width:min(1240px,92%);padding:clamp(30px,4.5vw,64px)}
+.about-r3{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);grid-template-areas:"main photo" "edu edu";column-gap:clamp(36px,5vw,84px);row-gap:clamp(36px,4.5vw,60px);align-items:center}
+.about-main{grid-area:main;min-width:0}
+.about-r3 h2{font-size:clamp(56px,6.6vw,104px);line-height:.95;letter-spacing:-.03em;margin:20px 0 0}
+.about-r3 h2 .i18n-en{display:none}
+.about-r3 .about-name{margin:16px 0 0;font-size:clamp(15px,1.25vw,19px);letter-spacing:.06em}
+.about-r3 .about-copy{padding:0;border:0;margin-top:clamp(24px,3vw,38px);max-width:34em}
+.about-r3 .about-statement{font-size:clamp(16px,1.38vw,20px);line-height:1.95;margin:0;color:#263b2f}
+.about-r3 .disciplines{margin:28px 0 0;gap:8px}
+.about-r3 .disciplines li{padding:6px 14px;border:1px solid #6f80723d;border-radius:999px;font-size:12px;letter-spacing:.06em;background:#ffffff52}
+.about-r3 .about-photo-card{grid-area:photo;margin:0;padding:10px;background:linear-gradient(135deg,#ffffff94,#ffffff30);border:1px solid #ffffffbf;border-radius:6px 30px 6px 6px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 30px 70px #1e332630;transform:rotate(1.6deg);transition:transform .7s cubic-bezier(.2,.7,.2,1);overflow:visible}
+.about-r3 .about-photo-card img{display:block;width:100%;height:auto;border-radius:3px 22px 3px 3px}
+@media(hover:hover){.about-r3 .about-photo-card:hover{transform:rotate(0) scale(1.015)}}
+.about-edu{grid-area:edu;display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,4vw,64px);border-top:1px solid #72807452;padding-top:28px;min-width:0}
+.about-edu .education-heading{margin:2px 0 0;white-space:nowrap}
+.about-edu .education-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.6vw,40px);margin:0}
+.about-edu .education-list>div{border:0;padding:0;min-width:0}
+.edu-index{display:block;font:12px/1 Arial,sans-serif;letter-spacing:.14em;color:#6f8073;margin-bottom:14px}
+.about-edu dt{font-size:17px;font-weight:600;line-height:1.4}
+.about-edu dd{font-size:13px;line-height:1.7;margin:6px 0 0;color:#5a685d}
+body.reduced .about-r3 .about-photo-card{transform:none}
+@media(max-width:900px){
+ .about-r3{grid-template-columns:1fr;grid-template-areas:"main" "photo" "edu";row-gap:32px}
+ .about-r3 .about-photo-card{transform:rotate(1deg);max-width:560px}
+ .about-edu{grid-template-columns:1fr;gap:18px}
+ .about-edu .education-list{grid-template-columns:1fr;gap:0;border-left:1px solid #72807452;margin-left:4px}
+ .about-edu .education-list>div{padding:0 0 22px 22px;position:relative}
+ .about-edu .education-list>div:before{content:"";position:absolute;left:-4px;top:2px;width:7px;height:7px;border-radius:50%;background:#6f8073}
+ .edu-index{margin-bottom:8px}
+}
+@media(max-width:700px){.about-intro .section-content{padding:26px 22px}.about-r3 h2{font-size:clamp(46px,14vw,64px)}}

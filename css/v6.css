@@ -58,6 +58,12 @@ body.reduced .filters button:hover{transform:none}
 #diary-book.front-cover .book-spread,#diary-book.back-cover .book-spread{box-shadow:none}
 #diary-book.front-cover .book-spread:after,#diary-book.back-cover .book-spread:after{display:none}
 #diary-book .book-page img[hidden]{display:none}
+/* r03: during a cover turn the empty side stays hidden and each leaf keeps its own shadow, matching the resting cover. */
+#diary-book .book-page.empty{visibility:hidden;pointer-events:none}
+#diary-book.cover-turn .book-spread{box-shadow:none}
+#diary-book.cover-turn .book-spread:after{opacity:0}
+#diary-book.cover-turn .book-page:not(.empty),#diary-book.cover-turn .turn-face{box-shadow:0 14px 30px #00180d40}
+#diary-book .book-spread{will-change:transform}
 
 /* Album photographs become a screened, moving background for In the current. */
 .exhibit-current.halftone-section{padding:90px 0 65px;isolation:isolate;overflow:hidden;min-height:0}.exhibit-current .current-backdrop{inset:-180px -5%;transform:translate3d(0,var(--current-depth,0px),0);will-change:transform;opacity:.76}.current-backdrop img{animation:current-drift 20s ease-in-out infinite alternate;animation-play-state:paused}.reveal-visible .current-backdrop img{animation-play-state:running}

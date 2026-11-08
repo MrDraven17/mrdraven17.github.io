@@ -2,7 +2,10 @@ export function installCamera({renderer,scene,camera,title,motion,onOpen,onClose
  const $=s=>document.querySelector(s),dialog=$('#model-ref'),photo=$('#model-ref img'),button=$('#reference');let timer=0,flashTimer=0,previousFocus;
  function finish(){clearTimeout(timer);clearTimeout(flashTimer);document.body.classList.remove('camera-flash');dialog.classList.remove('developing');dialog.classList.add('developed')}
  const syncMotion=()=>{document.body.classList.toggle('camera-motion-off',!motion());if(!motion())finish()};syncMotion();
+ // r03: glow + label until the first photo of this visit; the label alone retires after 9 s.
+ if(sessionStorage.getItem('draven-camera-used')!=='1'){document.body.classList.add('camera-invite','camera-hint-on');setTimeout(()=>document.body.classList.remove('camera-hint-on'),9000)}
  async function capture(){
+  document.body.classList.remove('camera-invite','camera-hint-on');sessionStorage.setItem('draven-camera-used','1');
   clearTimeout(timer);clearTimeout(flashTimer);onOpen();renderer.render(scene,camera);photo.src=renderer.domElement.toDataURL('image/png');
   $('#photo-caption').textContent=title+' / '+new Date().toLocaleDateString('en-CA');
   dialog.classList.remove('developing','developed');photo.style.transition='none';photo.style.filter='grayscale(1)';void photo.offsetWidth;photo.style.transition='';photo.style.filter='';if(!dialog.open){previousFocus=document.activeElement;dialog.showModal()}

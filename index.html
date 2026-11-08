@@ -17,9 +17,9 @@
   <script defer src="js/works.js?v=557162e714bd"></script>
   <script defer src="js/main.js?v=ddc0e6445d5b"></script>
   <link rel="stylesheet" href="css/theme.css?v=8eeb8c02ad97">
-  <link rel="stylesheet" href="css/v4.css?v=f262697d3ec2"><script defer src="js/hero-v4.js?v=7ee583fcea99"></script><script defer src="js/interactions.js?v=8a8f6788be49"></script><script defer src="js/halftone.js?v=fe008effb40f"></script>
-<link rel="icon" href="data:,">
-<link rel="stylesheet" href="css/v5.css?v=8ae9e1b9fbcc"><script defer src="js/v5.js?v=d91714ef5b19"></script><link rel="stylesheet" href="css/v6.css?v=9dea0536d48d"><script defer src="js/v6.js?v=459b17fae7b0"></script><script defer src="js/i18n.js?v=e2b94bbab779"></script></head>
+  <link rel="stylesheet" href="css/v4.css?v=f262697d3ec2"><script defer src="js/hero-v4.js?v=7ee583fcea99"></script><script defer src="js/interactions.js?v=r03-cards"></script><script defer src="js/halftone.js?v=fe008effb40f"></script>
+<link rel="icon" href="data:,"><link rel="preload" href="assets/v4/signature-outline.png" as="image">
+<link rel="stylesheet" href="css/v5.css?v=8ae9e1b9fbcc"><script defer src="js/v5.js?v=d91714ef5b19"></script><link rel="stylesheet" href="css/v6.css?v=9dea0536d48d"><script defer src="js/v6.js?v=459b17fae7b0"></script><script defer src="js/i18n.js?v=e2b94bbab779"></script><link rel="stylesheet" href="css/r03.css?v=0"><link rel="stylesheet" href="css/hero-cards.css?v=1"><script defer src="js/hero-cards.js?v=2"></script><link rel="stylesheet" href="css/transitions.css?v=3"><script defer src="js/transitions.js?v=3"></script></head>
 <body class="over-dark">
 <a class="skip" href="#works">跳至全部作品</a>
 <!-- 导航标识延续原版本，签名仅用于首屏。 -->
@@ -28,19 +28,20 @@
     <a class="brand" href="#home">Wang Dingyi <span>汪鼎翊</span></a>
     <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation">菜单</button>
     <nav id="navigation" aria-label="主导航">
-      <a href="#selected">Selected</a><a href="space.html">Space ↗</a><a href="#works">Works</a>
-      <a href="#about">About</a><a href="#contact">Contact</a>
+      <a href="#about">About</a><a href="#selected">Selected</a><a href="space.html">Space ↗</a>
+      <a href="#works">Works</a><a href="#contact">Contact</a>
     </nav>
   </div>
   <div id="progress" aria-hidden="true"></div>
 </header>
 <main>
+  <div class="curtain">
   <section id="home" class="hero signature-hero" aria-label="汪鼎翊 / Draven">
     <div class="hero-background" aria-hidden="true">
-      <img class="is-visible" src="assets/pages/3-012.jpg" alt="" fetchpriority="high">
-      <img src="assets/pages/1-008.jpg" alt="" decoding="async">
-      <img src="assets/pages/7-004.jpg" alt="" decoding="async">
-      <img src="assets/pages/7-002.jpg" alt="" decoding="async">
+      <img class="is-visible" src="assets/web-h/3-012.webp" srcset="assets/web-m/pages/3-012.webp 1000w, assets/web-h/3-012.webp 1600w" sizes="100vw" alt="" fetchpriority="high">
+      <img data-srcset="assets/web-m/pages/1-008.webp 1000w, assets/web-h/1-008.webp 1600w" sizes="100vw" alt="" decoding="async">
+      <img data-srcset="assets/web-m/pages/7-004.webp 1000w, assets/web-h/7-004.webp 1600w" sizes="100vw" alt="" decoding="async">
+      <img data-srcset="assets/web-m/pages/7-002.webp 1000w, assets/web-h/7-002.webp 1600w" sizes="100vw" alt="" decoding="async">
     </div>
     <div class="hero-shade" aria-hidden="true"></div>
     <div class="signature-content">
@@ -49,9 +50,17 @@
     </div>
     <div class="hero-focus-shade" aria-hidden="true"></div><p class="hero-kicker">PHOTOGRAPHY · SPATIAL DESIGN · VISUAL STUDIES</p><p class="hero-index">WANG DINGYI / DRAVEN</p>
     <div class="hero-bottom"><div class="hero-motion"><span id="motion-label">动效</span><button id="motion-toggle" type="button" role="switch" aria-checked="true" aria-label="开关动态效果"><span class="switch-track" aria-hidden="true"><span class="switch-thumb"><svg viewbox="0 0 20 20"><path d="M7 5v10M13 5v10"></path></svg></span><span class="switch-on">ON</span><span class="switch-off">OFF</span></span></button></div>
-      <a class="hero-down" href="#selected" aria-label="向下浏览作品"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6"></path></svg></a>
+      <a class="hero-down" href="#about" aria-label="向下浏览作品"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6"></path></svg></a>
     </div>
   </section>
+  <section id="about" class="about section halftone-section about-intro" aria-labelledby="about-title"><div class="halftone-backdrop" aria-hidden="true"><img class="reveal-photo" src="assets/web/pages/7-015.webp" srcset="assets/web-m/pages/7-015.webp 1000w, assets/web/pages/7-015.webp 2400w" sizes="(max-width: 700px) 100vw, 80vw" alt="" loading="lazy"><img class="halftone-sheet" src="assets/v4/about-halftone.png" alt="" loading="lazy"></div><div class="section-content">
+    <div class="about-r3">
+      <div class="about-main"><p class="eyebrow">ABOUT</p><h2 id="about-title">汪鼎翊</h2><p class="about-name">Draven / Wang Dingyi</p><div class="about-copy"><p class="about-statement">我关注工业与文化遗产中的记忆如何被保留，并在当代生活中获得新生。以城市更新与公共艺术为出发点，我尝试通过摄影、影像、模型与数字媒体艺术，探索空间、记忆与人的关系，以及艺术表达的更多可能。</p></div><ul class="disciplines"><li>Photography</li><li>Spatial design</li><li>Visual studies</li></ul></div>
+      <figure class="about-portrait about-photo-card"><img src="assets/revision02/portrait.webp" alt="汪鼎翊手持相机的生活照片" loading="lazy" width="1280" height="959"></figure>
+      <div class="about-edu"><h3 class="education-heading">教育背景</h3><dl class="education-list"><div><span class="edu-index" aria-hidden="true">01</span><dt>西北师范大学</dt><dd>环境设计 · 本科毕业</dd></div><div><span class="edu-index" aria-hidden="true">02</span><dt>波兹南艺术大学</dt><dd>景观设计</dd></div><div><span class="edu-index" aria-hidden="true">03</span><dt>天津美术学院</dt><dd>城市更新与公共艺术 · 硕士研究生在读</dd></div></dl></div>
+    </div>
+  </div></section>
+  </div>
 
   <!-- 展区与索引分层：展区展示原作内页，Works 始终使用指定封面。 -->
   <section id="selected" class="selected-section" aria-labelledby="selected-title">
@@ -68,18 +77,18 @@
         <a class="text-link" data-open="silence" href="collections/silence.html">Explore the series <span aria-hidden="true">↗</span></a>
       </div>
       <div class="silence-images">
-        <figure><a class="selected-image" href="collections/silence.html" data-open="silence" aria-label="打开完整作品系列"><img src="assets/original-pages/7-034.png" alt="Traces of Silence，彩色墙面与线框空间装置" loading="lazy" width="5400" height="3600"></a></figure>
-        <figure class="silence-detail"><a href="space.html" class="space-image-link" aria-label="走进这张照片的三维重建场景"><img src="assets/original-pages/7-024.png" alt="旧厂房内部的光线与空间" loading="lazy" width="5400" height="3600"></a><figcaption>Everyday places, quietly observed.</figcaption></figure>
+        <figure><a class="selected-image" href="collections/silence.html" data-open="silence" aria-label="打开完整作品系列"><img src="assets/web/original-pages/7-034.webp" srcset="assets/web-m/original-pages/7-034.webp 1000w, assets/web/original-pages/7-034.webp 2400w" sizes="(max-width: 700px) 100vw, 80vw" alt="Traces of Silence，彩色墙面与线框空间装置" loading="lazy" width="5400" height="3600"></a></figure>
+        <figure class="silence-detail"><a href="space.html" class="space-image-link" aria-label="走进这张照片的三维重建场景"><img src="assets/web/original-pages/7-024.webp" srcset="assets/web-m/original-pages/7-024.webp 1000w, assets/web/original-pages/7-024.webp 2400w" sizes="(max-width: 700px) 100vw, 80vw" alt="旧厂房内部的光线与空间" loading="lazy" width="5400" height="3600"></a><figcaption>Everyday places, quietly observed.</figcaption></figure>
       </div>
     </article>
 <article class="exhibit exhibit-current halftone-section"><div class="halftone-backdrop current-backdrop" aria-hidden="true"><img class="reveal-photo" src="assets/revision02/current-monochrome.webp" alt="" loading="lazy" width="1920" height="1400"><img class="halftone-sheet" src="assets/revision02/current-halftone.webp" alt="" loading="lazy" width="1920" height="1400"></div>
       <div class="current-heading"><div><p class="eyebrow">02 — PHOTOGRAPHY</p><h3>In the current.</h3></div><a class="text-link" data-open="current" href="collections/current.html">Explore the series ↗</a></div>
-      <figure><a class="selected-image" data-open="current" href="collections/current.html" aria-label="打开 In the current 作品集"><img src="assets/pages/3-012.jpg" alt="In the current，穿过秋日公园的人" loading="lazy" width="1800" height="1200"></a></figure>
+      <figure><a class="selected-image" data-open="current" href="collections/current.html" aria-label="打开 In the current 作品集"><img src="assets/web/pages/3-012.webp" srcset="assets/web-m/pages/3-012.webp 1000w, assets/web/pages/3-012.webp 2400w" sizes="(max-width: 700px) 100vw, 80vw" alt="In the current，穿过秋日公园的人" loading="lazy" width="1800" height="1200"></a></figure>
       <div class="exhibit-caption"><span>我在洪流之中</span><span>Poznań · Photography</span></div>
     </article>
 <article class="exhibit exhibit-wolne">
       <div class="wolne-heading"><div><p class="eyebrow">03 — SPATIAL DESIGN</p><h3>Wolne Tory.</h3></div><div><p class="exhibit-sub">Bridging the Urban Divide.<br>Regeneration of Wolne Tory in Poznań.</p><a class="text-link" data-open="wolne" href="collections/wolne.html">View the project ↗</a></div></div>
-      <figure><a class="selected-image" href="collections/wolne.html" data-open="wolne" aria-label="打开完整作品系列"><img src="assets/original-pages/6-033.png" alt="Wolne Tory 阶段方案：整体空间鸟瞰图" loading="lazy" width="5400" height="3375"></a></figure>
+      <figure><a class="selected-image" href="collections/wolne.html" data-open="wolne" aria-label="打开完整作品系列"><img src="assets/web/original-pages/6-033.webp" srcset="assets/web-m/original-pages/6-033.webp 1000w, assets/web/original-pages/6-033.webp 2400w" sizes="(max-width: 700px) 100vw, 80vw" alt="Wolne Tory 阶段方案：整体空间鸟瞰图" loading="lazy" width="5400" height="3375"></a></figure>
       <p class="exhibit-caption">Landscape design · 阶段方案</p>
     </article>
   </section>
@@ -102,64 +111,58 @@
     <div id="project-grid" class="project-grid">
       <article class="project-card" data-project="silence" data-category="photo" style="--cover-bg:#aaa79e">
         <a class="project-button" href="collections/silence.html" data-open="silence" aria-label="查看 Traces of Silence，共 36 页">
-          <div class="project-picture"><img class="cover-image" src="assets/original-pages/7-034.png" alt="Traces of Silence — 封面" loading="lazy"></div>
+          <div class="project-picture"><img class="cover-image" src="assets/web-m/original-pages/7-034.webp" alt="Traces of Silence — 封面" loading="lazy"></div>
           <div class="project-info"><p class="project-label">Photography</p><h3>Traces of Silence</h3><p class="project-sub">An Aesthetic Journey through Everyday Places</p><span class="project-pages">36 pages</span></div>
         </a>
       </article>
       <article class="project-card" data-project="tides" data-category="space" style="--cover-bg:#9aab8a">
         <a class="project-button" href="collections/tides.html" data-open="tides" aria-label="查看 Layered Tides，共 1 页">
-          <div class="project-picture cover-tides"><img class="cover-image" src="assets/pages/8-001.jpg" alt="Layered Tides — 封面" loading="lazy"></div>
+          <div class="project-picture cover-tides"><img class="cover-image" src="assets/web-m/pages/8-001.webp" alt="Layered Tides — 封面" loading="lazy"></div>
           <div class="project-info"><p class="project-label">Landscape design</p><h3>Layered Tides</h3><p class="project-sub">A small public garden inspired by Minnan cultural forms</p><span class="project-pages">1 page</span></div>
         </a>
       </article>
       <article class="project-card" data-project="current" data-category="photo" style="--cover-bg:#e8e8e6">
         <a class="project-button" href="collections/current.html" data-open="current" aria-label="查看 In the current，共 22 页">
-          <div class="project-picture"><img class="cover-image" src="assets/pages/3-001.jpg" alt="In the current — 封面" loading="lazy"></div>
+          <div class="project-picture"><img class="cover-image" src="assets/web-m/pages/3-001.webp" alt="In the current — 封面" loading="lazy"></div>
           <div class="project-info"><p class="project-label">Photography</p><h3>In the current</h3><p class="project-sub">Photography · Poznań</p><span class="project-pages">22 pages</span></div>
         </a>
       </article>
       <article class="project-card" data-project="wolne" data-category="space" style="--cover-bg:#ffffff">
         <a class="project-button" href="collections/wolne.html" data-open="wolne" aria-label="查看 Wolne Tory，共 40 页">
-          <div class="project-picture"><img class="cover-image" src="assets/original-pages/6-033.png" alt="Wolne Tory — 封面" loading="lazy"></div>
+          <div class="project-picture"><img class="cover-image" src="assets/web-m/original-pages/6-033.webp" alt="Wolne Tory — 封面" loading="lazy"></div>
           <div class="project-info"><p class="project-label">Urban regeneration</p><h3>Wolne Tory</h3><p class="project-sub">Bridging the Urban Divide</p><span class="project-pages">40 pages</span></div>
         </a>
       </article>
       <article class="project-card" data-project="analog" data-category="photo" style="--cover-bg:#39393b">
         <a class="project-button" href="collections/analog.html" data-open="analog" aria-label="查看 Draven’s analoge album，共 20 页">
-          <div class="project-picture"><img class="cover-image" src="assets/pages/1-001.jpg" alt="Draven’s analoge album — 封面" loading="lazy"></div>
+          <div class="project-picture"><img class="cover-image" src="assets/web-m/pages/1-001.webp" alt="Draven’s analoge album — 封面" loading="lazy"></div>
           <div class="project-info"><p class="project-label">Analog photography</p><h3>Draven’s analoge album</h3><p class="project-sub">My first photography with an analog camera</p><span class="project-pages">20 pages</span></div>
         </a>
       </article>
       <article class="project-card" data-project="diary" data-category="photo" style="--cover-bg:#ececeb">
         <a class="project-button" href="collections/diary.html" data-open="diary" aria-label="查看 Draven’s diary，共 122 页">
-          <div class="project-picture"><img class="cover-image" src="assets/pages/2-001.jpg" alt="Draven’s diary — 封面" loading="lazy"></div>
+          <div class="project-picture"><img class="cover-image" src="assets/web-m/pages/2-001.webp" alt="Draven’s diary — 封面" loading="lazy"></div>
           <div class="project-info"><p class="project-label">Photo diary</p><h3>Draven’s diary</h3><p class="project-sub">Photography &amp; everyday life</p><span class="project-pages">122 pages</span></div>
         </a>
       </article>
       <article class="project-card" data-project="mood" data-category="visual" style="--cover-bg:#9c9a92">
         <a class="project-button" href="collections/mood.html" data-open="mood" aria-label="查看 Mood Board，共 1 页">
-          <div class="project-picture"><img class="cover-image" src="assets/pages/4-001.jpg" alt="Mood Board — 封面" loading="lazy"></div>
+          <div class="project-picture"><img class="cover-image" src="assets/web-m/pages/4-001.webp" alt="Mood Board — 封面" loading="lazy"></div>
           <div class="project-info"><p class="project-label">Visual research</p><h3>Mood Board</h3><p class="project-sub">Images, fragments, connections</p><span class="project-pages">1 page</span></div>
         </a>
       </article>
       <article class="project-card" data-project="horowit" data-category="visual" style="--cover-bg:#e7e7e3">
         <a class="project-button" href="collections/horowit.html" data-open="horowit" aria-label="查看 Ryszard Horowit，共 1 页">
-          <div class="project-picture"><img class="cover-image" src="assets/pages/5-001.jpg" alt="Ryszard Horowit — 封面" loading="lazy"></div>
+          <div class="project-picture"><img class="cover-image" src="assets/web-m/pages/5-001.webp" alt="Ryszard Horowit — 封面" loading="lazy"></div>
           <div class="project-info"><p class="project-label">Image study</p><h3>Ryszard Horowit</h3><p class="project-sub">Reference &amp; response</p><span class="project-pages">1 page</span></div>
         </a>
       </article>
-    <article class="project-card" data-project="eternal" data-category="space"><a class="project-button" href="collections/eternal.html" data-open="eternal" aria-label="查看 Eternal Flow，共 9 页"><div class="project-picture"><img class="cover-image" src="assets/eternal/cover.jpg" alt="Eternal Flow 封面" loading="lazy"></div><div class="project-info"><p class="project-label">Spatial design</p><h3>Eternal Flow</h3><p class="project-sub">A public space design along the Warta River</p><span class="project-pages">9 pages</span></div></a></article><article class="project-card" data-project="rendering" data-category="visual"><a class="project-button" href="collections/rendering.html" data-open="rendering" aria-label="查看 Rendering studies，共 3 页"><div class="project-picture"><img class="cover-image" src="assets/rendering/Image12.jpg" alt="Rendering studies 封面" loading="lazy"></div><div class="project-info"><p class="project-label">Visual studies</p><h3>Rendering studies</h3><p class="project-sub">Light, atmosphere &amp; moving image</p><span class="project-pages">3 pages</span></div></a></article></div>
+    <article class="project-card" data-project="eternal" data-category="space"><a class="project-button" href="collections/eternal.html" data-open="eternal" aria-label="查看 Eternal Flow，共 9 页"><div class="project-picture"><img class="cover-image" src="assets/web-m/eternal/cover.webp" alt="Eternal Flow 封面" loading="lazy"></div><div class="project-info"><p class="project-label">Spatial design</p><h3>Eternal Flow</h3><p class="project-sub">A public space design along the Warta River</p><span class="project-pages">9 pages</span></div></a></article><article class="project-card" data-project="rendering" data-category="visual"><a class="project-button" href="collections/rendering.html" data-open="rendering" aria-label="查看 Rendering studies，共 3 页"><div class="project-picture"><img class="cover-image" src="assets/web-m/rendering/Image12.webp" alt="Rendering studies 封面" loading="lazy"></div><div class="project-info"><p class="project-label">Visual studies</p><h3>Rendering studies</h3><p class="project-sub">Light, atmosphere &amp; moving image</p><span class="project-pages">3 pages</span></div></a></article></div>
     <noscript><p>点击作品可浏览完整页序。启用 JavaScript 可体验交互查看器。</p></noscript>
   </section>
 
-  <section id="about" class="about section halftone-section" aria-labelledby="about-title"><div class="halftone-backdrop" aria-hidden="true"><img class="reveal-photo" src="assets/pages/7-015.jpg" alt="" loading="lazy"><img class="halftone-sheet" src="assets/v4/about-halftone.png" alt="" loading="lazy"></div><div class="section-content">
-    <p class="eyebrow">ABOUT</p>
-    <div class="about-grid">
-      <div class="about-person"><h2 id="about-title">汪鼎翊</h2><p class="about-name">Draven / Wang Dingyi</p><figure class="about-portrait"><img src="assets/revision02/portrait.webp" alt="汪鼎翊手持相机的生活照片" loading="lazy" width="1280" height="959"></figure></div>
-      <div class="about-copy"><p class="about-statement">我关注工业与文化遗产中的记忆如何被保留，并在当代生活中获得新生。以城市更新与公共艺术为出发点，我尝试通过摄影、影像、模型与数字媒体艺术，探索空间、记忆与人的关系，以及艺术表达的更多可能。</p><h3 class="education-heading">教育背景</h3><dl class="education-list"><div><dt>西北师范大学</dt><dd>环境设计 · 本科毕业</dd></div><div><dt>波兹南艺术大学</dt><dd>景观设计</dd></div><div><dt>天津美术学院</dt><dd>城市更新与公共艺术 · 硕士研究生在读</dd></div></dl><ul class="disciplines"><li>Photography</li><li>Spatial design</li><li>Visual studies</li></ul></div>
-    </div>
-  </div></section>
-  <section id="contact" class="contact section halftone-section" aria-labelledby="contact-title"><div class="halftone-backdrop" aria-hidden="true"><img class="reveal-photo" src="assets/pages/1-017.jpg" alt="" loading="lazy"><img class="halftone-sheet" src="assets/v4/contact-halftone.png" alt="" loading="lazy"></div><div class="section-content">
+
+  <section id="contact" class="contact section halftone-section" aria-labelledby="contact-title"><div class="halftone-backdrop" aria-hidden="true"><img class="reveal-photo" src="assets/web/pages/1-017.webp" srcset="assets/web-m/pages/1-017.webp 1000w, assets/web/pages/1-017.webp 2400w" sizes="(max-width: 700px) 100vw, 80vw" alt="" loading="lazy"><img class="halftone-sheet" src="assets/v4/contact-halftone.png" alt="" loading="lazy"></div><div class="section-content">
     <p class="eyebrow">GET IN TOUCH</p>
     <h2 id="contact-title">Let’s connect.</h2>
     <a class="email-link" href="mailto:dingyiw674@gmail.com">dingyiw674@gmail.com <span aria-hidden="true">↗</span></a>

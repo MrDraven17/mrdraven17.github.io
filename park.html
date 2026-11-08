@@ -3,49 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="description" content="汪鼎翊 / Draven — 公园里的行人、青绿草地与漂浮光点。基于 3-012 的三渲二 180° 交互场景。">
-  <meta name="color-scheme" content="light">
+  <meta name="description" content="汪鼎翊 / Draven — In the current：由照片 3-012 还原的公园场景，可在原图视角附近环顾。">
   <link rel="icon" href="data:,">
-  <title>经过一片浮光 — Draven / Spatial study 02</title>
+  <title>In the current — Draven / Spatial study 02</title>
   <link rel="stylesheet" href="css/space.css?v=f6aef003b797">
-  <link rel="stylesheet" href="css/park.css?v=5364dae25e50">
-  <script defer src="js/space-loader.js?v=1ac810a622ff"></script>
-<script type="importmap">{"imports":{"three":"./js/vendor/three/build/three.module.js"}}</script><script type="module" src="js/scene-detail-v5.js?v=f3de286d25e6"></script><link rel="stylesheet" href="css/v6.css?v=9dea0536d48d"><script defer src="js/i18n.js?v=e2b94bbab779"></script><script defer src="js/scene-layout.js?v=5a056d761e4c"></script></head>
-<body class="park-theme">
+  <link rel="stylesheet" href="css/park-r04.css?v=1">
+  <script defer src="js/space-loader.js?v=r04b"></script>
+</head>
+<body class="park-r04">
 <main id="space-app" data-scene="park">
-  <img id="space-cover" src="assets/park/reference.webp" alt="原始参考：青绿草坪、深色树干、穿黑色长外套的行人与公园长椅" fetchpriority="high">
-  <div id="space-stage" aria-label="公园、行人与浮光的三维场景"></div>
+  <img id="space-cover" src="assets/park/reference.webp" alt="原始照片：秋末公园，穿黑色长外套的行人走过小路，后方是长椅、灌木与老楼" fetchpriority="high">
+  <div id="space-stage" aria-label="由照片还原的公园场景"></div>
   <div class="space-shade" aria-hidden="true"></div>
   <header class="space-header">
     <a class="space-back" href="index.html#selected" aria-label="返回作品展区"><span aria-hidden="true">↖</span><span>Draven<span class="back-word"> / Portfolio</span></span></a>
     <p class="space-edition">SPATIAL STUDY <span>002 / 3—012</span></p>
-    <div class="space-actions"><button id="space-compare" type="button" aria-pressed="false">原图对照</button><button id="space-settings-button" type="button" aria-expanded="false" aria-controls="space-settings">设置 <span aria-hidden="true">＋</span></button></div>
+    <div class="space-actions"><button id="space-compare" type="button" aria-pressed="false">原图对照</button></div>
   </header>
-  <aside id="space-settings" class="space-panel" hidden aria-label="公园场景设置">
-    <label for="space-quality">画面质量</label><select id="space-quality"><option value="auto">自动适配</option><option value="high">精细</option><option value="low">流畅</option></select>
-    <button id="park-particles" type="button" aria-pressed="true">空气浮光 <span>开</span></button>
-    <button id="space-film" type="button" aria-pressed="true">胶片质感 <span>开</span></button>
-    <label for="park-atmosphere">光线氛围</label><select id="park-atmosphere"><option value="noon">阴天 · 原图氛围</option><option value="golden">暖色傍晚</option><option value="dusk">粉灰暮色</option><option value="night">蓝调夜色</option></select>
-    <div class="park-style-controls">
-      <label for="park-haze">空气感 <output id="park-haze-value">0.014</output></label><input id="park-haze" type="range" min="0.008" max="0.030" step="0.001" value="0.014">
-      <label for="park-offset">印刷错版 <output id="park-offset-value">0.40</output></label><input id="park-offset" type="range" min="0" max="1" step="0.01" value="0.4">
-      <label for="park-grain">胶片颗粒 <output id="park-grain-value">0.04</output></label><input id="park-grain" type="range" min="0" max="0.08" step="0.005" value="0.04">
-      <label for="park-exposure">画面亮度 <output id="park-exposure-value">1.05</output></label><input id="park-exposure" type="range" min="0.85" max="1.30" step="0.01" value="1.05">
-    </div>
-    <button id="park-pixelate" type="button" aria-pressed="false">像素效果 <span>关</span></button>
-    <button id="park-style-reset" type="button">恢复默认风格 <span aria-hidden="true">↺</span></button>
-    <p id="park-motion-note">光点缓慢漂浮，人物保持照片中的迈步姿态。</p>
-    <p>正面 180° · 左右各 90°<br>拖动旋转 · 滚轮 / 双指缩放<br>方向键旋转 · ＋ / − 缩放 · Home 复位</p>
-    
-    <a class="park-other" href="space.html">旧厂房场景 ↗</a>
-  </aside>
-  <figure id="space-reference" hidden><img src="assets/park/reference.webp" alt="3-012 原始参考照片"><figcaption>3—012 / REFERENCE PHOTOGRAPH · 原始参考照片</figcaption></figure>
-  <div id="space-loading" role="status"><span class="loading-line"></span><span id="space-status">正在还原公园的颜色与空间…</span><button id="space-retry" type="button" hidden>重新加载</button></div>
-  <div class="space-tools" role="group" aria-label="缩放与复位"><button id="space-zoom-in" type="button" aria-label="放大场景">＋</button><button id="space-zoom-out" type="button" aria-label="缩小场景">−</button><button id="space-reset" type="button" aria-label="恢复原图视角">↺</button></div>
-  <div class="space-caption"><p class="space-index">IN THE CURRENT <span>—</span> A WALK IN THE LIGHT</p><h1>经过一片浮光<span>A passing moment.</span></h1><p class="space-description">青绿、落叶，与一个经过的人。</p></div>
-  <footer class="space-footer"><p id="space-hint" aria-live="polite">正面 180° <span aria-hidden="true">↔</span></p><div class="space-views" role="group" aria-label="选择公园视角"><button type="button" data-space-view="left" aria-pressed="false">左侧观察</button><button type="button" data-space-view="photo" aria-pressed="true">原图视角</button><button type="button" data-space-view="right" aria-pressed="false">右侧观察</button></div><p class="space-credit">WANG DINGYI <span>© 2026</span></p></footer>
-  <p id="space-notice" class="space-notice" role="status" aria-live="polite"></p>
-  <noscript><p class="no-script">启用 JavaScript 可在正面 180° 范围观察三维场景。<a href="index.html#selected">返回作品</a></p></noscript>
+  <figure id="space-reference" hidden><img src="assets/park/reference.webp" alt="3-012 原始照片"><figcaption>3—012 / REFERENCE PHOTOGRAPH · 原始照片</figcaption></figure>
+  <div id="space-loading" role="status"><span class="loading-line"></span><span id="space-status">正在还原公园…</span><button id="space-retry" type="button" hidden>重新加载</button></div>
+  <div class="space-tools" role="group" aria-label="缩放与复位"><button id="space-zoom-in" type="button" aria-label="放大">＋</button><button id="space-zoom-out" type="button" aria-label="缩小">−</button><button id="space-reset" type="button" aria-label="回到原图视角">↺</button></div>
+  <div class="space-caption"><p class="space-index">IN THE CURRENT <span>—</span> POZNAŃ</p><h1>我在洪流之中<span>In the current.</span></h1><p class="space-description">一个经过的人，一段落叶的小路。</p></div>
+  <footer class="space-footer"><p id="space-hint" aria-live="polite">移动鼠标 · 环顾　滚轮 · 拉近</p><div class="space-views" role="group" aria-label="选择视角"><button type="button" data-space-view="left" aria-pressed="false">偏左</button><button type="button" data-space-view="photo" aria-pressed="true">原图视角</button><button type="button" data-space-view="right" aria-pressed="false">偏右</button></div><p class="space-credit">WANG DINGYI <span>© 2026</span></p></footer>
+  <noscript><p class="no-script">启用 JavaScript 可在原图视角附近环顾这个场景。<a href="index.html#selected">返回作品</a></p></noscript>
 </main>
 </body>
 </html>

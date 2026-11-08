@@ -67,7 +67,7 @@
         } else if(project.id === 'eternal') interval=setTimeout(next,3200);
       };
       img.onerror = function () { loading = false; };
-      img.src = source;
+      img.src = source.replace("assets/web/", "assets/web-m/");
     }
     function next(){if(cancelled)return;animation?.cancel();animation=null;windowNode.classList.remove('long-page');current=(current+1)%sources.length;display(sources[current],false)}
     display(sources[0], true);

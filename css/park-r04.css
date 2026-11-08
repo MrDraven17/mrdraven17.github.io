@@ -1,0 +1,8 @@
+/* r04 park — photo-faithful scene: no tint, a light shade only behind the text. */
+.park-r04 #space-app{background:#d9d8cf}
+.park-r04 .space-shade{background:linear-gradient(180deg,#0b100d66 0,transparent 20%,transparent 62%,#0b100d70 86%,#0b100da8)}
+.park-r04 #space-cover{opacity:1}
+.park-r04 #space-stage canvas{cursor:default}
+.park-r04 #space-stage canvas:active{cursor:grabbing}
+.park-r04 .space-caption{bottom:120px}
+.park-r04.space-interacted .space-caption{opacity:0;transform:translateY(8px)}
